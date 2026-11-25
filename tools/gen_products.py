@@ -1,0 +1,173 @@
+#!/usr/bin/env python3
+"""Generate js/products.js — the full shop catalog (260 products).
+
+The 24 hand-written products below keep their copy; the rest are generated
+deterministically (fixed seed) so re-running produces the same file.
+Category totals are intentionally uneven. Run:  python3 tools/gen_products.py
+"""
+import json, random, re, datetime, pathlib
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+rng = random.Random(260)
+
+TARGET = {'tees': 72, 'hoodies': 58, 'pants': 49, 'jackets': 43, 'accessories': 38}  # = 260
+ALL = ['XS', 'S', 'M', 'L', 'XL', '2XL']
+OS = ['OS']
+COLORS = ['black', 'grey', 'cream', 'orange', 'olive']
+COLOR_LABEL = {'black': 'Black', 'grey': 'Grey', 'cream': 'Bone', 'orange': 'Signal', 'olive': 'Olive'}
+
+# [id, name, category, price, colors, sizes, stock, date, popularity, image, desc]
+BASE = [
+  ['v01-tech-hoodie', 'V-01 Tech Hoodie', 'hoodies', 139, ['black', 'grey'], ['S', 'M', 'L', 'XL', '2XL'], 'in-stock', '2026-11-20', 95, 'hoodie', 'Our signature 420gsm brushed-back fleece with a scuba hood, bonded zip pockets and the /// mark at the chest. Boxy through the body, dropped at the shoulder.'],
+  ['graphic-tee-02', 'Graphic Tee 02', 'tees', 79, ['black'], ALL, 'in-stock', '2026-11-18', 88, 'tee', 'Heavyweight 260gsm cotton tee with a cracked-ink X graphic screen-printed by hand. Boxy cut with a tight ribbed collar that holds its shape.'],
+  ['cargo-pants', 'Cargo Pants', 'pants', 179, ['black'], ['S', 'M', 'L', 'XL'], 'in-stock', '2026-11-15', 90, 'cargo', 'Wide-leg cargos in a dense cotton twill with bellowed thigh pockets and adjustable ankle cinches. Built to stack over sneakers.'],
+  ['utility-jacket', 'Utility Jacket', 'jackets', 229, ['cream'], ['S', 'M', 'L', 'XL', '2XL'], 'in-stock', '2026-11-12', 84, 'jacket', 'A water-resistant shell in bone with taped seams, storm flap and four utility pockets. Light enough to layer, tough enough for weather.'],
+  ['signature-cap', 'Signature Cap', 'accessories', 49, ['black'], OS, 'in-stock', '2026-11-10', 92, 'cap', 'Six-panel structured cap with the /// mark embroidered in 3D. Curved brim and an adjustable metal clasp at the back.'],
+  ['tech-sling-bag', 'Tech Sling Bag', 'accessories', 89, ['black', 'orange'], OS, 'in-stock', '2026-11-08', 80, 'sling', 'A 4L crossbody in coated ripstop with a signal-orange zip channel, quick-release buckle and padded phone sleeve.'],
+  ['v02-shell-hoodie', 'V-02 Shell Hoodie', 'hoodies', 149, ['grey'], ['XS', 'S', 'M', 'L', 'XL'], 'in-stock', '2026-11-05', 70, 'hoodie', 'A hooded overlayer in a soft-shell bonded fleece that blocks wind and sheds light rain. Laser-cut vents under the arms.'],
+  ['graphic-tee-03-bone', 'Graphic Tee 03 — Bone', 'tees', 75, ['cream'], ALL, 'in-stock', '2026-11-02', 66, 'tee', 'The 03 graphic in tonal ink on an undyed bone body. Heavyweight 260gsm cotton, garment-washed for a lived-in hand.'],
+  ['ripstop-cargo-olive', 'Ripstop Cargo — Olive', 'pants', 189, ['olive'], ['S', 'M', 'L', 'XL'], 'in-stock', '2026-10-29', 74, 'cargo', 'Olive ripstop cargos with articulated knees, hidden zip pockets and a gusseted crotch for full range of movement.'],
+  ['field-jacket-olive', 'Field Utility Jacket — Olive', 'jackets', 239, ['olive'], ['M', 'L', 'XL', '2XL'], 'in-stock', '2026-10-25', 61, 'jacket', 'A four-pocket field jacket in waxed olive cotton with a corduroy-lined collar and snap-down storm cuffs.'],
+  ['core-cap-orange', 'Core Logo Cap — Orange', 'accessories', 45, ['orange'], OS, 'in-stock', '2026-10-22', 58, 'cap', 'The core six-panel in signal orange with a tonal embroidered logo and an unstructured, broken-in crown.'],
+  ['crossbody-sling-grey', 'Crossbody Sling — Grey', 'accessories', 79, ['grey'], OS, 'in-stock', '2026-10-19', 52, 'sling', 'A slim crossbody in grey nylon with two zip compartments and a webbing strap that adjusts with one pull.'],
+  ['v01-tech-hoodie-signal', 'V-01 Tech Hoodie — Signal', 'hoodies', 139, ['orange'], ['S', 'M', 'L', 'XL'], 'in-stock', '2026-10-15', 77, 'hoodie', 'The V-01 Tech Hoodie in signal orange — same brushed-back fleece, scuba hood and bonded pockets, louder colour.'],
+  ['boxy-tee-01', 'Boxy Tee 01', 'tees', 65, ['black', 'grey'], ALL, 'in-stock', '2026-10-12', 63, 'tee', 'An everyday boxy tee in 220gsm combed cotton. Short body, wide sleeves, no graphics — the base layer for everything.'],
+  ['tech-jogger', 'Tech Jogger', 'pants', 159, ['black'], ['XS', 'S', 'M', 'L', 'XL'], 'in-stock', '2026-10-08', 69, 'cargo', 'A tapered jogger in four-way stretch nylon with zip hand pockets and a bungee-cinch hem. Moves like sweats, looks sharper.'],
+  ['storm-shell-jacket', 'Storm Shell Jacket', 'jackets', 259, ['black'], ['S', 'M', 'L', 'XL', '2XL'], 'in-stock', '2026-10-04', 81, 'jacket', 'A 3-layer waterproof shell rated 20K with fully taped seams, pit zips and a helmet-compatible hood.'],
+  ['heavyweight-hoodie-bone', 'Heavyweight Hoodie — Bone', 'hoodies', 129, ['cream'], ALL, 'in-stock', '2026-09-30', 72, 'hoodie', 'A 500gsm loopback hoodie in undyed bone with a double-layer hood and no drawcords for a clean, heavy drape.'],
+  ['utility-tee-grey', 'Utility Tee — Grey', 'tees', 69, ['grey'], ['S', 'M', 'L', 'XL'], 'in-stock', '2026-09-26', 49, 'tee', 'A grey marl tee with a reinforced chest utility pocket and bar-tacked seams. Heavyweight cotton, relaxed fit.'],
+  ['six-pocket-pant', 'Six-Pocket Pant — Black', 'pants', 199, ['black'], ['M', 'L', 'XL', '2XL'], 'in-stock', '2026-09-22', 56, 'cargo', 'Black six-pocket pants in brushed cotton sateen with a straight leg and an adjustable buckle waist.'],
+  ['waxed-cap-olive', 'Waxed Cap — Olive', 'accessories', 55, ['olive'], OS, 'in-stock', '2026-09-18', 44, 'cap', 'A waxed cotton cap in olive that sheds light rain and patinas with wear. Leather strap with a brass buckle.'],
+  ['v03-gore-hoodie', 'V-03 Gore Hoodie', 'hoodies', 169, ['black'], ['S', 'M', 'L', 'XL'], 'pre-order', '2026-12-10', 85, 'hoodie', 'The V-03 in a waterproof membrane fleece with welded seams and a laminated chest pocket. Shipping with the December drop.'],
+  ['expedition-parka', 'Expedition Parka', 'jackets', 329, ['black', 'olive'], ['M', 'L', 'XL', '2XL'], 'pre-order', '2026-12-05', 83, 'jacket', 'An insulated expedition parka with a 700-fill synthetic core, removable hood baffle and eight pockets. Built for real cold.'],
+  ['graphic-tee-04-signal', 'Graphic Tee 04 — Signal', 'tees', 85, ['orange'], ALL, 'pre-order', '2026-12-01', 60, 'tee', 'The 04 graphic printed in black on a signal-orange heavyweight body. Limited run, shipping with the December drop.'],
+  ['modular-sling-pack', 'Modular Sling Pack', 'accessories', 119, ['grey', 'olive'], OS, 'pre-order', '2026-11-28', 64, 'sling', 'A modular sling with a detachable hip pouch, MOLLE webbing and a weather-sealed main zip. Wear it three ways.'],
+]
+
+# Per-category name parts, price band, image and copy fragments.
+SPEC = {
+  'tees': {
+    'img': 'tee', 'price': (55, 95),
+    'models': ['Graphic Tee', 'Boxy Tee', 'Heavyweight Tee', 'Pocket Tee', 'Long Sleeve Tee', 'Mock Neck Tee', 'Oversized Tee', 'Raglan Tee', 'Thermal Long Sleeve', 'Logo Tee', 'Ringer Tee', 'Muscle Tee'],
+    'series': ['Core', 'Signal', 'Concrete', 'Grid', 'Static', 'Terrain', 'Drop 07', 'Archive', '///', 'Night Shift', 'Summit', 'Overpass'],
+    'fabric': ['260gsm heavyweight cotton', '220gsm combed cotton', 'garment-dyed 240gsm jersey', 'slub cotton jersey', 'brushed cotton-modal', 'organic 250gsm cotton'],
+    'detail': ['a hand-pulled screen print on the back', 'a tonal puff-print /// mark at the chest', 'a double-needle hem and taped shoulder seams', 'a thick ribbed collar that holds its shape', 'a cracked-ink graphic across the chest', 'a woven brand label at the side seam'],
+    'fit': ['Boxy, cropped body with dropped shoulders.', 'Relaxed through the body with wide sleeves.', 'Oversized fit — size down for a closer cut.', 'Regular fit that layers under everything.'],
+  },
+  'hoodies': {
+    'img': 'hoodie', 'price': (109, 189),
+    'models': ['Tech Hoodie', 'Heavyweight Hoodie', 'Zip Hoodie', 'Half-Zip Fleece', 'Pullover Hoodie', 'Shell Hoodie', 'Scuba Hoodie', 'Cropped Hoodie', 'Fleece Crewneck', 'Thermal Hoodie'],
+    'series': ['V-04', 'V-05', 'V-06', 'Core', 'Signal', 'Concrete', 'Terrain', 'Drop 07', 'Archive', 'Night Shift', 'Summit'],
+    'fabric': ['420gsm brushed-back fleece', '500gsm loopback cotton', 'bonded soft-shell fleece', 'polar grid fleece', 'garment-dyed French terry', 'recycled tech fleece'],
+    'detail': ['a scuba hood and bonded zip pockets', 'a double-layer hood with no drawcords', 'a kangaroo pocket with a hidden phone sleeve', 'thumbhole cuffs and a ribbed hem', 'laser-cut underarm vents', 'an embroidered /// mark at the chest'],
+    'fit': ['Boxy through the body, dropped at the shoulder.', 'Relaxed fit with a slightly cropped length.', 'Oversized fit built for layering.', 'Regular fit with a clean, heavy drape.'],
+  },
+  'pants': {
+    'img': 'cargo', 'price': (129, 219),
+    'models': ['Cargo Pant', 'Tech Jogger', 'Ripstop Cargo', 'Parachute Pant', 'Utility Trouser', 'Carpenter Pant', 'Track Pant', 'Wide-Leg Cargo', 'Cargo Short', 'Fleece Sweatpant'],
+    'series': ['Core', 'Signal', 'Concrete', 'Terrain', 'Grid', 'Drop 07', 'Archive', 'Night Shift', 'Overpass'],
+    'fabric': ['dense cotton twill', 'four-way stretch nylon', 'olive ripstop cotton', 'crinkle nylon', 'brushed cotton sateen', 'heavyweight loopback fleece'],
+    'detail': ['bellowed thigh pockets and ankle cinches', 'articulated knees and a gusseted crotch', 'zip hand pockets and a bungee-cinch hem', 'a buckle waist and hidden zip pockets', 'a hammer loop and reinforced knee panels', 'adjustable toggles at the hem'],
+    'fit': ['Wide leg that stacks over sneakers.', 'Tapered leg with room through the thigh.', 'Straight leg, mid rise.', 'Relaxed fit with an elastic back waist.'],
+  },
+  'jackets': {
+    'img': 'jacket', 'price': (189, 349),
+    'models': ['Utility Jacket', 'Shell Jacket', 'Field Jacket', 'Coach Jacket', 'Puffer Jacket', 'Overshirt', 'Bomber Jacket', 'Windbreaker', 'Insulated Vest', 'Rain Parka', 'Work Jacket'],
+    'series': ['Core', 'Signal', 'Concrete', 'Terrain', 'Storm', 'Drop 07', 'Archive', 'Night Shift', 'Summit', 'Expedition'],
+    'fabric': ['a water-resistant nylon shell', 'a 3-layer waterproof membrane', 'waxed cotton canvas', 'recycled ripstop with synthetic fill', 'a brushed cotton drill', 'packable 20D nylon'],
+    'detail': ['taped seams and a storm flap', 'four bellowed utility pockets', 'pit zips and a helmet-compatible hood', 'a corduroy-lined collar and snap cuffs', 'a two-way zip and an internal stash pocket', 'reflective /// trims on the back'],
+    'fit': ['Boxy fit with room to layer.', 'Regular fit, hip length.', 'Relaxed fit with dropped shoulders.', 'Cropped, boxy cut.'],
+  },
+  'accessories': {
+    'img': None, 'price': (29, 129),
+    'models': [('Six-Panel Cap', 'cap'), ('Dad Cap', 'cap'), ('Camp Cap', 'cap'), ('Nylon Cap', 'cap'), ('Trucker Cap', 'cap'), ('Sling Bag', 'sling'), ('Crossbody Pouch', 'sling'), ('Hip Pack', 'sling'), ('Utility Pouch', 'sling'), ('Chest Rig', 'sling')],
+    'series': ['Core', 'Signal', 'Concrete', 'Terrain', 'Drop 07', 'Archive', 'Night Shift', 'Summit', 'Grid'],
+    'fabric': ['coated ripstop', 'washed cotton twill', 'waxed canvas', 'recycled 600D nylon', 'brushed nylon', 'heavy cotton drill'],
+    'detail': ['an embroidered /// mark', 'a quick-release buckle', 'a weather-sealed zip', 'an adjustable metal clasp', 'MOLLE webbing on the front', 'a padded phone sleeve'],
+    'fit': ['One size, fully adjustable.', 'Fits most — adjusts with one pull.', 'One size with an adjustable strap.'],
+  },
+}
+
+def slug(s):
+    s = s.replace('///', 'mark').replace('—', ' ')
+    return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
+
+def pick_sizes(cat):
+    if cat == 'accessories':
+        return OS
+    start = rng.choice([0, 0, 1, 1, 1])
+    end = rng.choice([4, 5, 5, 6, 6])
+    return ALL[start:end]
+
+def gen(cat, n, used_ids, used_names):
+    s = SPEC[cat]
+    out = []
+    today = datetime.date(2026, 11, 24)
+    while len(out) < n:
+        model = rng.choice(s['models'])
+        img = s['img']
+        if isinstance(model, tuple):
+            model, img = model
+        series = rng.choice(s['series'])
+        colors = rng.sample(COLORS, rng.choice([1, 1, 1, 2, 2, 3]))
+        name = f"{series} {model} — {COLOR_LABEL[colors[0]]}"
+        if name in used_names:
+            continue
+        pid = slug(f"{series} {model} {COLOR_LABEL[colors[0]]}")
+        if pid in used_ids:
+            continue
+        used_names.add(name); used_ids.add(pid)
+        lo, hi = s['price']
+        price = rng.randrange(lo // 10, hi // 10 + 1) * 10 + rng.choice([5, 9])
+        pre = rng.random() < 0.08
+        if pre:
+            date = datetime.date(2026, 11, 26) + datetime.timedelta(days=rng.randrange(0, 60))
+        else:
+            date = today - datetime.timedelta(days=rng.randrange(0, 210))
+        pop = rng.randrange(8, 95)
+        noun = model.lower()
+        desc = (f"The {series} {noun} in {' / '.join(COLOR_LABEL[c].lower() for c in colors)}, cut from "
+                f"{rng.choice(s['fabric'])} with {rng.choice(s['detail'])}. {rng.choice(s['fit'])}")
+        if pre:
+            desc += ' Ships with the next drop.'
+        out.append([pid, name, cat, price, colors, pick_sizes(cat), 'pre-order' if pre else 'in-stock',
+                    date.isoformat(), pop, img, desc])
+    return out
+
+used_ids = {p[0] for p in BASE}
+used_names = {p[1] for p in BASE}
+products = list(BASE)
+for cat, total in TARGET.items():
+    have = sum(1 for p in BASE if p[2] == cat)
+    products += gen(cat, total - have, used_ids, used_names)
+
+assert len(products) == 260 and len({p[0] for p in products}) == 260
+
+counts = {c: sum(1 for p in products if p[2] == c) for c in TARGET}
+avail = {a: sum(1 for p in products if p[6] == a) for a in ('in-stock', 'pre-order')}
+
+rows = ',\n'.join('  ' + json.dumps(p, ensure_ascii=False) for p in products)
+js = f"""/* GENERATED by tools/gen_products.py — do not edit by hand; edit the script and re-run.
+   NGProducts: the full shop catalog ({len(products)} products).
+   Row: [id, name, category, price, colors, sizes, stock, date, popularity, image, description]
+   Category totals: {json.dumps(counts)} · availability: {json.dumps(avail)} */
+window.NGProducts = [
+{rows}
+];
+"""
+(ROOT / 'js' / 'products.js').write_text(js, encoding='utf-8')
+
+# Keep the no-JS filter counts in the shop partial in step with the data.
+part = ROOT / 'src' / 'partials' / 'shop-listing.html'
+html = part.read_text(encoding='utf-8')
+labels = {'hoodies': 'Hoodies', 'jackets': 'Jackets', 'tees': 'Tees', 'pants': 'Pants', 'accessories': 'Accessories'}
+for c, label in labels.items():
+    in_stock = sum(1 for p in products if p[2] == c and p[6] == 'in-stock')  # default filter: in-stock only
+    html = re.sub(rf'{label} \(\d+\)', f'{label} ({in_stock})', html)
+html = re.sub(r'In Stock \(\d+\)', f"In Stock ({avail['in-stock']})", html)
+html = re.sub(r'Pre-Order \(\d+\)', f"Pre-Order ({avail['pre-order']})", html)
+html = re.sub(r'data-apply-count>\d+<', f"data-apply-count>{avail['in-stock']}<", html)
+html = re.sub(r'data-count>\d+ Products<', f"data-count>{avail['in-stock']} Products<", html)
+part.write_text(html, encoding='utf-8')
+
+print(len(products), counts, avail)

@@ -15,73 +15,20 @@
     cap: ['assets/img/product-signature-cap.webp', 597, 654],
     sling: ['assets/img/product-tech-sling-bag.webp', 600, 657],
   };
-  const ALL_SIZES = ['XS', 'S', 'M', 'L', 'XL', '2XL'];
-  const OS = ['OS'];
-  // [id, name, category, price, colors, sizes, stock, date, popularity, image]
-  const RAW = [
-    ['v01-tech-hoodie', 'V-01 Tech Hoodie', 'hoodies', 139, ['black', 'grey'], ['S', 'M', 'L', 'XL', '2XL'], 'in-stock', '2026-11-20', 95, 'hoodie'],
-    ['graphic-tee-02', 'Graphic Tee 02', 'tees', 79, ['black'], ALL_SIZES, 'in-stock', '2026-11-18', 88, 'tee'],
-    ['cargo-pants', 'Cargo Pants', 'pants', 179, ['black'], ['S', 'M', 'L', 'XL'], 'in-stock', '2026-11-15', 90, 'cargo'],
-    ['utility-jacket', 'Utility Jacket', 'jackets', 229, ['cream'], ['S', 'M', 'L', 'XL', '2XL'], 'in-stock', '2026-11-12', 84, 'jacket'],
-    ['signature-cap', 'Signature Cap', 'accessories', 49, ['black'], OS, 'in-stock', '2026-11-10', 92, 'cap'],
-    ['tech-sling-bag', 'Tech Sling Bag', 'accessories', 89, ['black', 'orange'], OS, 'in-stock', '2026-11-08', 80, 'sling'],
-    ['v02-shell-hoodie', 'V-02 Shell Hoodie', 'hoodies', 149, ['grey'], ['XS', 'S', 'M', 'L', 'XL'], 'in-stock', '2026-11-05', 70, 'hoodie'],
-    ['graphic-tee-03-bone', 'Graphic Tee 03 — Bone', 'tees', 75, ['cream'], ALL_SIZES, 'in-stock', '2026-11-02', 66, 'tee'],
-    ['ripstop-cargo-olive', 'Ripstop Cargo — Olive', 'pants', 189, ['olive'], ['S', 'M', 'L', 'XL'], 'in-stock', '2026-10-29', 74, 'cargo'],
-    ['field-jacket-olive', 'Field Utility Jacket — Olive', 'jackets', 239, ['olive'], ['M', 'L', 'XL', '2XL'], 'in-stock', '2026-10-25', 61, 'jacket'],
-    ['core-cap-orange', 'Core Logo Cap — Orange', 'accessories', 45, ['orange'], OS, 'in-stock', '2026-10-22', 58, 'cap'],
-    ['crossbody-sling-grey', 'Crossbody Sling — Grey', 'accessories', 79, ['grey'], OS, 'in-stock', '2026-10-19', 52, 'sling'],
-    ['v01-tech-hoodie-signal', 'V-01 Tech Hoodie — Signal', 'hoodies', 139, ['orange'], ['S', 'M', 'L', 'XL'], 'in-stock', '2026-10-15', 77, 'hoodie'],
-    ['boxy-tee-01', 'Boxy Tee 01', 'tees', 65, ['black', 'grey'], ALL_SIZES, 'in-stock', '2026-10-12', 63, 'tee'],
-    ['tech-jogger', 'Tech Jogger', 'pants', 159, ['black'], ['XS', 'S', 'M', 'L', 'XL'], 'in-stock', '2026-10-08', 69, 'cargo'],
-    ['storm-shell-jacket', 'Storm Shell Jacket', 'jackets', 259, ['black'], ['S', 'M', 'L', 'XL', '2XL'], 'in-stock', '2026-10-04', 81, 'jacket'],
-    ['heavyweight-hoodie-bone', 'Heavyweight Hoodie — Bone', 'hoodies', 129, ['cream'], ALL_SIZES, 'in-stock', '2026-09-30', 72, 'hoodie'],
-    ['utility-tee-grey', 'Utility Tee — Grey', 'tees', 69, ['grey'], ['S', 'M', 'L', 'XL'], 'in-stock', '2026-09-26', 49, 'tee'],
-    ['six-pocket-pant', 'Six-Pocket Pant — Black', 'pants', 199, ['black'], ['M', 'L', 'XL', '2XL'], 'in-stock', '2026-09-22', 56, 'cargo'],
-    ['waxed-cap-olive', 'Waxed Cap — Olive', 'accessories', 55, ['olive'], OS, 'in-stock', '2026-09-18', 44, 'cap'],
-    ['v03-gore-hoodie', 'V-03 Gore Hoodie', 'hoodies', 169, ['black'], ['S', 'M', 'L', 'XL'], 'pre-order', '2026-12-10', 85, 'hoodie'],
-    ['expedition-parka', 'Expedition Parka', 'jackets', 329, ['black', 'olive'], ['M', 'L', 'XL', '2XL'], 'pre-order', '2026-12-05', 83, 'jacket'],
-    ['graphic-tee-04-signal', 'Graphic Tee 04 — Signal', 'tees', 85, ['orange'], ALL_SIZES, 'pre-order', '2026-12-01', 60, 'tee'],
-    ['modular-sling-pack', 'Modular Sling Pack', 'accessories', 119, ['grey', 'olive'], OS, 'pre-order', '2026-11-28', 64, 'sling'],
-  ];
-  const DESC = {
-    'v01-tech-hoodie': 'Our signature 420gsm brushed-back fleece with a scuba hood, bonded zip pockets and the /// mark at the chest. Boxy through the body, dropped at the shoulder.',
-    'graphic-tee-02': 'Heavyweight 260gsm cotton tee with a cracked-ink X graphic screen-printed by hand. Boxy cut with a tight ribbed collar that holds its shape.',
-    'cargo-pants': 'Wide-leg cargos in a dense cotton twill with bellowed thigh pockets and adjustable ankle cinches. Built to stack over sneakers.',
-    'utility-jacket': 'A water-resistant shell in bone with taped seams, storm flap and four utility pockets. Light enough to layer, tough enough for weather.',
-    'signature-cap': 'Six-panel structured cap with the /// mark embroidered in 3D. Curved brim and an adjustable metal clasp at the back.',
-    'tech-sling-bag': 'A 4L crossbody in coated ripstop with a signal-orange zip channel, quick-release buckle and padded phone sleeve.',
-    'v02-shell-hoodie': 'A hooded overlayer in a soft-shell bonded fleece that blocks wind and sheds light rain. Laser-cut vents under the arms.',
-    'graphic-tee-03-bone': 'The 03 graphic in tonal ink on an undyed bone body. Heavyweight 260gsm cotton, garment-washed for a lived-in hand.',
-    'ripstop-cargo-olive': 'Olive ripstop cargos with articulated knees, hidden zip pockets and a gusseted crotch for full range of movement.',
-    'field-jacket-olive': 'A four-pocket field jacket in waxed olive cotton with a corduroy-lined collar and snap-down storm cuffs.',
-    'core-cap-orange': 'The core six-panel in signal orange with a tonal embroidered logo and an unstructured, broken-in crown.',
-    'crossbody-sling-grey': 'A slim crossbody in grey nylon with two zip compartments and a webbing strap that adjusts with one pull.',
-    'v01-tech-hoodie-signal': 'The V-01 Tech Hoodie in signal orange — same brushed-back fleece, scuba hood and bonded pockets, louder colour.',
-    'boxy-tee-01': 'An everyday boxy tee in 220gsm combed cotton. Short body, wide sleeves, no graphics — the base layer for everything.',
-    'tech-jogger': 'A tapered jogger in four-way stretch nylon with zip hand pockets and a bungee-cinch hem. Moves like sweats, looks sharper.',
-    'storm-shell-jacket': 'A 3-layer waterproof shell rated 20K with fully taped seams, pit zips and a helmet-compatible hood.',
-    'heavyweight-hoodie-bone': 'A 500gsm loopback hoodie in undyed bone with a double-layer hood and no drawcords for a clean, heavy drape.',
-    'utility-tee-grey': 'A grey marl tee with a reinforced chest utility pocket and bar-tacked seams. Heavyweight cotton, relaxed fit.',
-    'six-pocket-pant': 'Black six-pocket pants in brushed cotton sateen with a straight leg and an adjustable buckle waist.',
-    'waxed-cap-olive': 'A waxed cotton cap in olive that sheds light rain and patinas with wear. Leather strap with a brass buckle.',
-    'v03-gore-hoodie': 'The V-03 in a waterproof membrane fleece with welded seams and a laminated chest pocket. Shipping with the December drop.',
-    'expedition-parka': 'An insulated expedition parka with a 700-fill synthetic core, removable hood baffle and eight pockets. Built for real cold.',
-    'graphic-tee-04-signal': 'The 04 graphic printed in black on a signal-orange heavyweight body. Limited run, shipping with the December drop.',
-    'modular-sling-pack': 'A modular sling with a detachable hip pouch, MOLLE webbing and a weather-sealed main zip. Wear it three ways.',
-  };
-  const PRODUCTS = RAW.map(([id, name, category, price, colors, sizes, stock, date, popularity, img]) => ({
-    id, name, category, price, colors, sizes, stock, date: Date.parse(date), popularity, img: IMG[img], desc: DESC[id] || '',
+  // Full catalog lives in js/products.js (generated by tools/gen_products.py).
+  // Row: [id, name, category, price, colors, sizes, stock, date, popularity, image, description]
+  const PRODUCTS = (window.NGProducts || []).map(([id, name, category, price, colors, sizes, stock, date, popularity, img, desc]) => ({
+    id, name, category, price, colors, sizes, stock, date: Date.parse(date), popularity, img: IMG[img] || IMG.tee, desc: desc || '',
   }));
   const BY_ID = new Map(PRODUCTS.map((p) => [p.id, p]));
   const ONE_SIZE = 'One size';
   const isOneSize = (p) => p.sizes.length === 1 && p.sizes[0] === 'OS';
   const colorName = (c) => c.charAt(0).toUpperCase() + c.slice(1);
 
-  const CATALOG_TOTAL = 124;   // notional catalog size shown with default filters
-  const CATALOG_PAGES = 12;
-  const PAGE1 = 6;             // page 1: 6 products + 2-column promo = 8 slots
-  const PER_PAGE = 8;
+  // Page sizes keep full rows at 4, 3 and 2 columns:
+  // page 1 = 18 products + the 2-slot promo (20 slots); later pages = 24.
+  const PAGE1 = 18;
+  const PER_PAGE = 24;
   const PRICE_MAX = 300;       // slider max == "no upper limit"
   const CATS = ['hoodies', 'jackets', 'tees', 'pants', 'accessories'];
 
@@ -143,10 +90,6 @@
       min: +minEl.value,
       max: +maxEl.value,
     };
-  }
-  function isDefault(f) {
-    return f.availability.length === 1 && f.availability[0] === 'in-stock' &&
-      !f.categories.length && !f.sizes.length && !f.colors.length && f.min === 0 && f.max === PRICE_MAX;
   }
   const catLabel = { hoodies: 'Hoodie', jackets: 'Jacket', tees: 'Tee', pants: 'Pants', accessories: 'Accessory' };
   function matchesQuery(p, q) {
@@ -222,9 +165,8 @@
   function render() {
     const f = readFilters();
     const list = apply(f);
-    const def = isDefault(f) && !state.query && list.length > 0;
-    const count = def ? CATALOG_TOTAL : list.length;
-    const pages = def ? CATALOG_PAGES : Math.max(1, list.length <= PAGE1 ? 1 : 1 + Math.ceil((list.length - PAGE1) / PER_PAGE));
+    const count = list.length;
+    const pages = Math.max(1, list.length <= PAGE1 ? 1 : 1 + Math.ceil((list.length - PAGE1) / PER_PAGE));
     lastTotal = pages;
     state.page = Math.min(Math.max(1, state.page), pages);
 
@@ -233,9 +175,16 @@
     const items = [];
     for (let k = 0; k < size; k++) {
       const idx = start + k;
-      if (def) items.push(list[idx % list.length]);          // notional catalog: cycle the sample data
-      else if (idx < list.length) items.push(list[idx]);
+      if (idx < list.length) items.push(list[idx]);
     }
+
+    // Category counts follow the availability filter (in-stock only by default)
+    $$('input[name="category"]').forEach((i) => {
+      const span = i.nextElementSibling;
+      const n = PRODUCTS.filter((p) => p.category === i.value && (!f.availability.length || f.availability.includes(p.stock))).length;
+      const text = span.textContent.replace(/\(\d+\)/, `(${n})`);
+      if (span.textContent !== text) span.textContent = text;
+    });
 
     const label = `${count} ${count === 1 ? 'Product' : 'Products'}`;
     if (countEl.textContent !== label) countEl.textContent = label;
