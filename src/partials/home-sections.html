@@ -1,162 +1,155 @@
-    <!-- Brand ticker ---------------------------------------------------- -->
-    <div class="hm-ticker" aria-hidden="true">
-      <div class="hm-ticker__track">
-        <span>Streetwear</span><i>///</i><span>Techwear</span><i>///</i><span>Everyday</span><i>///</i><span>Designed in Manila</span><i>///</i><span>Drop 08 — Terrain</span><i>///</i>
-        <span>Streetwear</span><i>///</i><span>Techwear</span><i>///</i><span>Everyday</span><i>///</i><span>Designed in Manila</span><i>///</i><span>Drop 08 — Terrain</span><i>///</i>
+    <!-- Crossed caution tapes (brand + store perks) ------------------------- -->
+    <div class="hx-tapes" aria-label="Store perks">
+      <div class="hx-tape hx-tape--a" aria-hidden="true">
+        <div class="hx-tape__track">
+          <span>Streetwear</span><b>///</b><span>Techwear</span><b>///</b><span>Everyday</span><b>///</b><span>Designed in Manila</span><b>///</b><span>Drop 08 — Terrain</span><b>///</b>
+          <span>Streetwear</span><b>///</b><span>Techwear</span><b>///</b><span>Everyday</span><b>///</b><span>Designed in Manila</span><b>///</b><span>Drop 08 — Terrain</span><b>///</b>
+        </div>
+      </div>
+      <div class="hx-tape hx-tape--b">
+        <ul class="hx-tape__track hx-tape__track--rev" role="list">
+          <li>Free shipping over $150</li><li aria-hidden="true">✕</li><li>Cash on delivery</li><li aria-hidden="true">✕</li><li>Easy returns &amp; exchanges</li><li aria-hidden="true">✕</li><li>Small runs, built to last</li><li aria-hidden="true">✕</li>
+          <li aria-hidden="true">Free shipping over $150</li><li aria-hidden="true">✕</li><li aria-hidden="true">Cash on delivery</li><li aria-hidden="true">✕</li><li aria-hidden="true">Easy returns &amp; exchanges</li><li aria-hidden="true">✕</li><li aria-hidden="true">Small runs, built to last</li><li aria-hidden="true">✕</li>
+        </ul>
       </div>
     </div>
 
-    <!-- Trending now ----------------------------------------------------- -->
-    <section class="hm-section hm-trending" aria-labelledby="trending-title">
-      <div class="container">
-        <header class="hm-head reveal">
-          <div>
-            <p class="hm-kicker">01 / Most wanted</p>
-            <h2 class="hm-title" id="trending-title">Trending <em>Now</em></h2>
+    <!-- The Chart: most wanted, as a ranked tracklist -------------------------- -->
+    <section class="hx-chart" aria-labelledby="chart-title">
+      <div class="container hx-chart__inner">
+        <div class="hx-chart__stage" aria-hidden="true">
+          <div class="hx-chart__frame" data-chart-frame>
+            <img src="assets/img/product-tech-hoodie.webp" width="675" height="666" alt="" data-chart-img>
           </div>
-          <div class="hm-head__side">
-            <div class="hm-rail-nav" data-rail-nav hidden>
-              <button class="hm-rail-btn" type="button" aria-label="Scroll trending products back" data-rail-prev>
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m15 6-6 6 6 6"/></svg>
-              </button>
-              <button class="hm-rail-btn" type="button" aria-label="Scroll trending products forward" data-rail-next>
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6"/></svg>
-              </button>
-            </div>
-            <a class="hm-link" href="shop.html?sort=popular">Shop best sellers <span aria-hidden="true">&rarr;</span></a>
-          </div>
-        </header>
-        <ul class="hm-rail" role="list" tabindex="0" aria-label="Trending products" data-rail>
-          <!-- filled from js/products.js by js/home.js -->
-        </ul>
-      </div>
-    </section>
+          <span class="hx-chart__rank" data-chart-rank>01</span>
+          <span class="hx-brk hx-brk--tl"></span><span class="hx-brk hx-brk--br"></span>
+          <p class="hx-chart__caption"><span data-chart-name>V-01 Tech Hoodie</span><span>Fig. <i data-chart-fig>01</i> — Most wanted this week</span></p>
+        </div>
 
-    <!-- Shop by category ------------------------------------------------- -->
-    <section class="hm-section hm-cats" aria-labelledby="cats-title">
-      <div class="container">
-        <header class="hm-head reveal">
-          <div>
-            <p class="hm-kicker">02 / The range</p>
-            <h2 class="hm-title" id="cats-title">Shop by <em>Category</em></h2>
-          </div>
-          <a class="hm-link" href="shop.html">View all products <span aria-hidden="true">&rarr;</span></a>
-        </header>
-        <ul class="hm-cats__grid" role="list">
-          <li class="hm-cat hm-cat--wide reveal">
-            <a class="hm-cat__link" href="shop.html?category=tees">
-              <img class="hm-cat__img" src="assets/img/product-graphic-tee.webp" width="669" height="663" alt="" loading="lazy" decoding="async">
-              <span class="hm-cat__name">Tees</span>
-              <span class="hm-cat__count"><span data-cat-count="tees">72</span> styles</span>
-              <svg class="hm-cat__arrow" viewBox="0 0 40 12" aria-hidden="true" focusable="false"><path d="M0 6h38M33 1l5 5-5 5"/></svg>
-            </a>
-          </li>
-          <li class="hm-cat reveal" style="transition-delay:80ms">
-            <a class="hm-cat__link" href="shop.html?category=hoodies">
-              <img class="hm-cat__img" src="assets/img/product-tech-hoodie.webp" width="675" height="666" alt="" loading="lazy" decoding="async">
-              <span class="hm-cat__name">Hoodies</span>
-              <span class="hm-cat__count"><span data-cat-count="hoodies">58</span> styles</span>
-              <svg class="hm-cat__arrow" viewBox="0 0 40 12" aria-hidden="true" focusable="false"><path d="M0 6h38M33 1l5 5-5 5"/></svg>
-            </a>
-          </li>
-          <li class="hm-cat reveal" style="transition-delay:160ms">
-            <a class="hm-cat__link" href="shop.html?category=pants">
-              <img class="hm-cat__img" src="assets/img/product-cargo-pants.webp" width="615" height="654" alt="" loading="lazy" decoding="async">
-              <span class="hm-cat__name">Pants</span>
-              <span class="hm-cat__count"><span data-cat-count="pants">49</span> styles</span>
-              <svg class="hm-cat__arrow" viewBox="0 0 40 12" aria-hidden="true" focusable="false"><path d="M0 6h38M33 1l5 5-5 5"/></svg>
-            </a>
-          </li>
-          <li class="hm-cat reveal" style="transition-delay:80ms">
-            <a class="hm-cat__link" href="shop.html?category=jackets">
-              <img class="hm-cat__img" src="assets/img/product-utility-jacket.webp" width="618" height="654" alt="" loading="lazy" decoding="async">
-              <span class="hm-cat__name">Jackets</span>
-              <span class="hm-cat__count"><span data-cat-count="jackets">43</span> styles</span>
-              <svg class="hm-cat__arrow" viewBox="0 0 40 12" aria-hidden="true" focusable="false"><path d="M0 6h38M33 1l5 5-5 5"/></svg>
-            </a>
-          </li>
-          <li class="hm-cat reveal" style="transition-delay:160ms">
-            <a class="hm-cat__link" href="shop.html?category=accessories">
-              <img class="hm-cat__img" src="assets/img/product-tech-sling-bag.webp" width="600" height="657" alt="" loading="lazy" decoding="async">
-              <span class="hm-cat__name">Accessories</span>
-              <span class="hm-cat__count"><span data-cat-count="accessories">38</span> styles</span>
-              <svg class="hm-cat__arrow" viewBox="0 0 40 12" aria-hidden="true" focusable="false"><path d="M0 6h38M33 1l5 5-5 5"/></svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Next drop --------------------------------------------------------- -->
-    <section class="hm-drop" aria-labelledby="drop-title">
-      <div class="hm-drop__media reveal">
-        <img src="assets/img/col-utility.webp" width="924" height="822" alt="Model in a black utility jacket with an orange strap detail" loading="lazy" decoding="async">
-        <span class="hm-drop__stamp" aria-hidden="true">08</span>
-      </div>
-      <div class="hm-drop__body reveal" style="transition-delay:120ms">
-        <p class="hm-kicker hm-kicker--orange">03 / Next drop</p>
-        <h2 class="hm-drop__title" id="drop-title">Drop 08<span>Terrain</span></h2>
-        <p class="hm-drop__text">Waterproof membranes, 700-fill insulation and utility hardware built for the wet season. Pre-orders are open now and ship the day the drop goes live.</p>
-        <div class="hm-count" data-countdown="2026-12-10T10:00:00+08:00">
-          <p class="hm-count__label" data-count-label>Live in</p>
-          <ol class="hm-count__units" role="list" aria-hidden="true" data-count-units>
-            <li><span data-unit="d">--</span><small>Days</small></li>
-            <li><span data-unit="h">--</span><small>Hrs</small></li>
-            <li><span data-unit="m">--</span><small>Min</small></li>
-            <li><span data-unit="s">--</span><small>Sec</small></li>
+        <div class="hx-chart__list-wrap">
+          <header class="hx-chart__head">
+            <p class="hx-micro">Ref. NGA / Chart — Week 48</p>
+            <h2 class="hx-chart__title" id="chart-title">Most<br><span>Wanted</span></h2>
+          </header>
+          <ol class="hx-chart__list" role="list" data-chart>
+            <!-- filled from js/products.js by js/home.js -->
           </ol>
-          <p class="visually-hidden" data-count-text>Drop 08 goes live on 10 December 2026 at 10:00 AM, Manila time.</p>
-          <p class="hm-count__date">10.12.2026 — 10:00 AM PHT</p>
-        </div>
-        <div class="hm-drop__ctas">
-          <a class="hm-btn hm-btn--primary" href="shop.html?stock=pre-order">Shop pre-orders <span aria-hidden="true">&rarr;</span></a>
-          <a class="hm-btn" href="collections.html">See collections</a>
+          <a class="hx-under" href="shop.html?sort=popular">Full chart in the shop <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
-    <!-- Perks --------------------------------------------------------------- -->
-    <section class="hm-perks" aria-label="Why shop with us">
-      <ul class="container hm-perks__list" role="list">
-        <li class="hm-perk reveal">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17.5" cy="17.5" r="1.6"/></svg>
-          <div><p class="hm-perk__title">Free shipping</p><p class="hm-perk__text">On orders over $150, nationwide.</p></div>
+    <!-- Category index: skewed panel strip ---------------------------------------- -->
+    <section class="hx-index" aria-labelledby="index-title">
+      <div class="container hx-index__head">
+        <h2 class="hx-index__title" id="index-title">Index<sup>/05</sup></h2>
+        <p class="hx-micro">Pick a lane. <span data-total-count>260</span> pieces across five lines.</p>
+      </div>
+      <ul class="hx-strip" role="list">
+        <li class="hx-panel">
+          <a class="hx-panel__link" href="shop.html?category=tees">
+            <img src="assets/img/product-graphic-tee.webp" width="669" height="663" alt="" loading="lazy" decoding="async">
+            <span class="hx-panel__no">A</span>
+            <span class="hx-panel__name">Tees</span>
+            <span class="hx-panel__count"><span data-cat-count="tees">72</span> pcs</span>
+          </a>
         </li>
-        <li class="hm-perk reveal" style="transition-delay:80ms">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="12" rx="1.5"/><circle cx="12" cy="12" r="2.5"/><path d="M6 9v.01M18 15v.01"/></svg>
-          <div><p class="hm-perk__title">Cash on delivery</p><p class="hm-perk__text">Pay when your order arrives.</p></div>
+        <li class="hx-panel">
+          <a class="hx-panel__link" href="shop.html?category=hoodies">
+            <img src="assets/img/product-tech-hoodie.webp" width="675" height="666" alt="" loading="lazy" decoding="async">
+            <span class="hx-panel__no">B</span>
+            <span class="hx-panel__name">Hoodies</span>
+            <span class="hx-panel__count"><span data-cat-count="hoodies">58</span> pcs</span>
+          </a>
         </li>
-        <li class="hm-perk reveal" style="transition-delay:160ms">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg>
-          <div><p class="hm-perk__title">Easy returns</p><p class="hm-perk__text"><a href="contact.html?type=returns#message-form">Start a return or exchange</a>.</p></div>
+        <li class="hx-panel">
+          <a class="hx-panel__link" href="shop.html?category=pants">
+            <img src="assets/img/product-cargo-pants.webp" width="615" height="654" alt="" loading="lazy" decoding="async">
+            <span class="hx-panel__no">C</span>
+            <span class="hx-panel__name">Pants</span>
+            <span class="hx-panel__count"><span data-cat-count="pants">49</span> pcs</span>
+          </a>
         </li>
-        <li class="hm-perk reveal" style="transition-delay:240ms">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-          <div><p class="hm-perk__title">Designed in Manila</p><p class="hm-perk__text">Small runs, built to last.</p></div>
+        <li class="hx-panel">
+          <a class="hx-panel__link" href="shop.html?category=jackets">
+            <img src="assets/img/product-utility-jacket.webp" width="618" height="654" alt="" loading="lazy" decoding="async">
+            <span class="hx-panel__no">D</span>
+            <span class="hx-panel__name">Jackets</span>
+            <span class="hx-panel__count"><span data-cat-count="jackets">43</span> pcs</span>
+          </a>
+        </li>
+        <li class="hx-panel">
+          <a class="hx-panel__link" href="shop.html?category=accessories">
+            <img src="assets/img/product-tech-sling-bag.webp" width="600" height="657" alt="" loading="lazy" decoding="async">
+            <span class="hx-panel__no">E</span>
+            <span class="hx-panel__name">Accessories</span>
+            <span class="hx-panel__count"><span data-cat-count="accessories">38</span> pcs</span>
+          </a>
         </li>
       </ul>
     </section>
 
-    <!-- Newsletter ---------------------------------------------------------- -->
-    <section class="hm-news" aria-labelledby="news-title">
-      <div class="container hm-news__inner">
-        <div class="hm-news__copy reveal">
-          <p class="hm-kicker">04 / The list</p>
-          <h2 class="hm-title" id="news-title">First Access, <em>Every Drop</em></h2>
-          <p class="hm-news__text">Get drop dates, restocks and members-only pre-orders before anyone else. No spam — one email per drop.</p>
-        </div>
-        <form class="hm-news__form reveal" action="contact.html" method="post" novalidate data-news-form style="transition-delay:120ms">
-          <label class="visually-hidden" for="news-email">Email address</label>
-          <div class="hm-news__field">
-            <input id="news-email" name="email" type="email" autocomplete="email" placeholder="Your email address" required aria-describedby="news-note news-error">
-            <button class="hm-btn hm-btn--primary" type="submit">Join the list</button>
+    <!-- Next drop: hang tag ---------------------------------------------------------- -->
+    <section class="hx-drop" aria-labelledby="drop-title">
+      <div class="container hx-drop__inner">
+        <figure class="hx-drop__photo">
+          <img src="assets/img/col-utility.webp" width="924" height="822" alt="Model in a black utility jacket with an orange strap detail" loading="lazy" decoding="async">
+          <span class="hx-drop__ghost" aria-hidden="true">08</span>
+          <span class="hx-brk hx-brk--tl" aria-hidden="true"></span><span class="hx-brk hx-brk--br" aria-hidden="true"></span>
+        </figure>
+
+        <article class="hx-tag">
+          <span class="hx-tag__hole" aria-hidden="true"></span>
+          <p class="hx-tag__top"><span>Next Gen Apparel</span><span>Issue 08 / 26</span></p>
+          <h2 class="hx-tag__title" id="drop-title">Drop 08<span>Terrain</span></h2>
+          <dl class="hx-tag__spec">
+            <div><dt>Line</dt><dd>Wet-season technical</dd></div>
+            <div><dt>Release</dt><dd>10.12.2026 — 10:00 PHT</dd></div>
+            <div><dt>Status</dt><dd class="hx-tag__status">Pre-order open</dd></div>
+          </dl>
+          <div class="hx-tag__count" data-countdown="2026-12-10T10:00:00+08:00">
+            <p class="hx-tag__label" data-count-label>Doors open in</p>
+            <p class="hx-tag__digits" aria-hidden="true">
+              <span data-unit="d">--</span><i>:</i><span data-unit="h">--</span><i>:</i><span data-unit="m">--</span><i>:</i><span data-unit="s">--</span>
+            </p>
+            <p class="hx-tag__units" aria-hidden="true"><span>Days</span><span>Hrs</span><span>Min</span><span>Sec</span></p>
+            <p class="visually-hidden" data-count-text>Drop 08 goes live on 10 December 2026 at 10:00 AM, Manila time.</p>
           </div>
-          <p class="hm-news__error" id="news-error" role="alert" data-news-error></p>
-          <p class="hm-news__note" id="news-note">Preview store — sign-ups aren't saved yet.</p>
-        </form>
-        <div class="hm-news__done" role="status" tabindex="-1" data-news-done hidden>
-          <p class="hm-news__done-title">You're on the list.</p>
-          <p class="hm-news__text">We'll email <strong data-news-echo></strong> before Drop 08 goes live.</p>
+          <svg class="hx-tag__barcode" viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M2 0h3v40H2zM8 0h1v40H8zM12 0h4v40h-4zM19 0h1v40h-1zM23 0h2v40h-2zM28 0h1v40h-1zM32 0h5v40h-5zM40 0h1v40h-1zM44 0h2v40h-2zM49 0h3v40h-3zM55 0h1v40h-1zM59 0h4v40h-4zM66 0h1v40h-1zM70 0h2v40h-2zM75 0h1v40h-1zM79 0h5v40h-5zM87 0h2v40h-2zM92 0h1v40h-1zM96 0h3v40h-3zM102 0h1v40h-1zM106 0h4v40h-4zM113 0h1v40h-1zM117 0h2v40h-2zM122 0h3v40h-3zM128 0h1v40h-1zM132 0h5v40h-5zM140 0h1v40h-1zM144 0h2v40h-2zM149 0h1v40h-1zM153 0h4v40h-4zM160 0h1v40h-1zM164 0h3v40h-3zM170 0h1v40h-1zM174 0h2v40h-2zM179 0h5v40h-5zM187 0h1v40h-1zM191 0h3v40h-3zM197 0h2v40h-2z"/></svg>
+          <div class="hx-tag__ctas">
+            <a class="hx-stamp" href="shop.html?stock=pre-order">Pre-order now <span aria-hidden="true">→</span></a>
+            <a class="hx-under hx-under--ink" href="collections.html">Browse collections</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Access pass newsletter ------------------------------------------------------------ -->
+    <section class="hx-pass-wrap" aria-labelledby="pass-title">
+      <div class="container">
+        <div class="hx-pass">
+          <div class="hx-pass__stub" aria-hidden="true">
+            <span>Access</span><b>///</b><span>No. 0000</span>
+          </div>
+          <div class="hx-pass__main">
+            <svg class="hx-pass__mark" viewBox="0 0 100 40" aria-hidden="true" focusable="false"><path d="M16 0h6.5L6.5 40H0zM41 0h6.5L31.5 40H25zM66 0h6.5L56.5 40H50zM91 0h6.5L81.5 40H75z"/></svg>
+            <p class="hx-pass__admit" aria-hidden="true">Admit one — all drops</p>
+            <p class="hx-micro hx-micro--orange">Members list — first access, every drop</p>
+            <h2 class="hx-pass__title" id="pass-title">Get on<br>the <span>List</span></h2>
+            <form class="hx-pass__form" action="contact.html" method="post" novalidate data-news-form>
+              <label class="hx-pass__label" for="news-email">Email</label>
+              <div class="hx-pass__row">
+                <input id="news-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required aria-describedby="news-note news-error">
+                <button class="hx-stamp hx-stamp--sm" type="submit">Claim pass</button>
+              </div>
+              <p class="hx-pass__error" id="news-error" role="alert" data-news-error></p>
+              <p class="hx-pass__note" id="news-note">Drop dates, restocks and member pre-orders. One email per drop. Preview store — sign-ups aren't saved yet.</p>
+            </form>
+            <div class="hx-pass__done" role="status" tabindex="-1" data-news-done hidden>
+              <p class="hx-pass__done-title">Pass issued<span aria-hidden="true"> ✓</span></p>
+              <p class="hx-pass__note">We'll email <strong data-news-echo></strong> before Drop 08 goes live.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
