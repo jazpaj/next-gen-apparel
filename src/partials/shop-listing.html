@@ -113,6 +113,14 @@
             </div>
           </div>
 
+          <div class="search-bar" data-search hidden>
+            <p class="search-bar__text" aria-live="polite" aria-atomic="true">Results for <q class="search-bar__term" data-search-term></q> — <span data-search-count>0 Products</span></p>
+            <button class="search-bar__clear" type="button" data-search-clear>
+              Clear search
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+            </button>
+          </div>
+
           <ul class="grid" role="list" data-grid>
             <li class="promo" data-promo>
               <a class="promo__link" href="shop.html?sort=newest">
@@ -127,12 +135,70 @@
           </ul>
 
           <div class="empty" data-empty hidden>
-            <p class="empty__title">No products match these filters.</p>
-            <p class="empty__text">Try widening the price range or removing a size or colour.</p>
-            <button class="empty__btn" type="button" data-filters-clear>Clear filters</button>
+            <p class="empty__title" data-empty-title>No products match these filters.</p>
+            <p class="empty__text" data-empty-text>Try widening the price range or removing a size or colour.</p>
+            <div class="empty__actions">
+              <button class="empty__btn" type="button" data-search-clear hidden>Clear search</button>
+              <button class="empty__btn" type="button" data-filters-clear>Clear filters</button>
+            </div>
           </div>
 
           <nav class="pager" aria-label="Pagination" data-pager></nav>
+        </div>
+      </div>
+
+      <!-- Quick view: filled by js/shop-listing.js; opened from a card or ?product=<id> -->
+      <div class="qv" data-qv hidden>
+        <div class="qv__backdrop" data-qv-close></div>
+        <div class="qv__panel" role="dialog" aria-modal="true" aria-labelledby="qv-title" aria-describedby="qv-desc" tabindex="-1" data-qv-panel>
+          <button class="qv__close" type="button" aria-label="Close quick view" data-qv-close>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+          <div class="qv__media">
+            <img class="qv__img" src="assets/img/product-tech-hoodie.webp" width="675" height="666" alt="" decoding="async" data-qv-img>
+            <span class="card__tag" data-qv-tag hidden>Pre-order</span>
+          </div>
+          <div class="qv__info">
+            <p class="qv__eyebrow" data-qv-cat></p>
+            <h2 class="qv__title" id="qv-title" data-qv-title></h2>
+            <p class="qv__price" data-qv-price></p>
+            <p class="qv__desc" id="qv-desc" data-qv-desc></p>
+
+            <div class="qv__opt">
+              <p class="qv__label" id="qv-color-label">Color <span class="qv__label-value" data-qv-color-name></span></p>
+              <div class="qv__swatches" role="group" aria-labelledby="qv-color-label" data-qv-colors></div>
+            </div>
+            <div class="qv__opt">
+              <p class="qv__label" id="qv-size-label">Size <span class="qv__label-value" data-qv-size-name></span></p>
+              <div class="qv__sizes" role="group" aria-labelledby="qv-size-label" data-qv-sizes></div>
+              <p class="qv__error" id="qv-size-error" role="alert" data-qv-error hidden>
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.8v5M12 16.2h.01"/></svg>
+                Select a size
+              </p>
+            </div>
+
+            <div class="qv__buy">
+              <div class="qty" role="group" aria-label="Quantity">
+                <button class="qty__btn" type="button" aria-label="Decrease quantity" data-qty-step="-1">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 12h12"/></svg>
+                </button>
+                <input class="qty__input" type="number" inputmode="numeric" min="1" max="10" step="1" value="1" aria-label="Quantity" data-qty>
+                <button class="qty__btn" type="button" aria-label="Increase quantity" data-qty-step="1">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 6v12M6 12h12"/></svg>
+                </button>
+              </div>
+              <button class="qv__add" type="button" data-qv-add>Add to bag</button>
+              <button class="qv__wish" type="button" aria-pressed="false" aria-label="Add to wishlist" data-qv-wish>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.8-4.7-7.8-10.4A4.4 4.4 0 0 1 12 7.2a4.4 4.4 0 0 1 7.8 2.7c0 5.7-7.8 10.4-7.8 10.4z"/></svg>
+              </button>
+            </div>
+
+            <ul class="qv__details" role="list" data-qv-details>
+              <li>Free shipping over $150</li>
+              <li>30-day returns</li>
+              <li data-qv-ship>Ships in 1–2 business days</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>

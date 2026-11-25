@@ -17,6 +17,7 @@
   <link rel="preload" as="image" href="assets/img/hero-model.webp">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/cart.css">
   <link rel="stylesheet" href="css/shop-hero.css">
   <link rel="stylesheet" href="css/about.css">
   <link rel="stylesheet" href="css/contact.css">
@@ -47,14 +48,15 @@
         <button class="header-btn" type="button" aria-label="Search" aria-expanded="false" aria-controls="header-search" data-search-toggle>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
         </button>
-        <a class="header-btn" href="#" aria-label="Account">
+        <button class="header-btn" type="button" aria-label="Account" aria-haspopup="dialog" aria-expanded="false" aria-controls="account-dialog" data-account-open>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="7.5" r="4"/><path d="M4.5 20.5v-1.2a4.3 4.3 0 0 1 4.3-4.3h6.4a4.3 4.3 0 0 1 4.3 4.3v1.2z"/></svg>
-        </a>
-        <a class="header-btn header-btn--bag" href="#" aria-label="Bag, 1 item">
+        </button>
+        <button class="header-btn header-btn--bag" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="cart-drawer" data-cart-open>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-.9 11.2a1.4 1.4 0 0 1-1.4 1.3H7.3a1.4 1.4 0 0 1-1.4-1.3z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/></svg>
-          <span class="header-btn__badge" aria-hidden="true"></span>
-          <span class="visually-hidden">1 item in bag</span>
-        </a>
+          <span class="header-btn__badge" aria-hidden="true" data-cart-badge hidden></span>
+          <span class="visually-hidden" data-cart-label>Bag, 0 items</span>
+        </button>
+        <span class="visually-hidden" aria-live="polite" data-cart-live></span>
         <button class="header-btn header-btn--menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu-overlay" data-menu-toggle>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
         </button>
@@ -62,7 +64,7 @@
     </div>
 
     <div class="header-search" id="header-search" hidden>
-      <form class="header-search__form" role="search" action="#" onsubmit="return false">
+      <form class="header-search__form" role="search" action="shop.html" method="get" data-search-form>
         <label class="visually-hidden" for="header-search-input">Search products</label>
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
         <input class="header-search__input" id="header-search-input" type="search" name="q" placeholder="Search hoodies, jackets, cargos…" autocomplete="off">
@@ -92,6 +94,56 @@
     </nav>
     <p class="menu-overlay__foot">Streetwear <span aria-hidden="true">/</span> Techwear <span aria-hidden="true">/</span> Everyday</p>
   </div>
+
+  <div class="ng-dialog ng-dialog--drawer" id="cart-drawer" hidden>
+    <div class="ng-dialog__overlay" data-dialog-close></div>
+    <div class="ng-dialog__panel cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" tabindex="-1">
+      <div class="ng-dialog__head">
+        <h2 class="ng-dialog__title" id="cart-title">Your bag</h2>
+        <span class="cart__headcount" data-cart-headcount></span>
+        <button class="header-btn ng-dialog__close" type="button" aria-label="Close bag" data-dialog-close>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="cart__body">
+        <ul class="cart__list" data-cart-list aria-label="Items in your bag"></ul>
+        <div class="cart__empty" data-cart-empty hidden>
+          <p class="cart__empty-title">Your bag is empty</p>
+          <p class="cart__empty-text">Fresh drops are waiting.</p>
+          <a class="ng-btn ng-btn--cream" href="shop.html" data-cart-shopnow>Shop now</a>
+        </div>
+      </div>
+      <div class="cart__foot" data-cart-foot hidden>
+        <div class="cart__subtotal"><span>Subtotal</span><span data-cart-subtotal>$0.00</span></div>
+        <p class="cart__note">Shipping &amp; taxes calculated at checkout</p>
+        <p class="cart__msg" role="status" data-cart-msg></p>
+        <button class="ng-btn ng-btn--cream" type="button" data-cart-checkout>Checkout</button>
+        <a class="ng-btn ng-btn--outline" href="shop.html" data-cart-continue>Continue shopping</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ng-dialog ng-dialog--modal" id="account-dialog" hidden>
+    <div class="ng-dialog__overlay" data-dialog-close></div>
+    <div class="ng-dialog__panel account" role="dialog" aria-modal="true" aria-labelledby="account-title" aria-describedby="account-desc" tabindex="-1">
+      <div class="ng-dialog__head">
+        <h2 class="ng-dialog__title" id="account-title">Account</h2>
+        <button class="header-btn ng-dialog__close" type="button" aria-label="Close account" data-dialog-close>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p class="account__text" id="account-desc">Member accounts are launching soon. Get early access to drops and order tracking.</p>
+      <form class="account__form" novalidate data-account-form>
+        <label class="account__label" for="account-email">Email address</label>
+        <input class="account__input" id="account-email" data-dialog-initial type="email" name="email" inputmode="email" autocomplete="email" placeholder="name@example.com" required aria-describedby="account-email-error">
+        <p class="account__error" id="account-email-error" hidden></p>
+        <button class="ng-btn ng-btn--cream" type="submit">Notify me</button>
+      </form>
+      <p class="account__done" tabindex="-1" data-account-done hidden>You&rsquo;re on the list.</p>
+    </div>
+  </div>
+
+  <div class="cart-toast-region" role="status" aria-live="polite" data-cart-toast></div>
   <main id="main">
     <section class="shop-hero about-hero" id="about-hero" aria-labelledby="about-hero-title">
       <svg class="shop-hero__defs" width="0" height="0" aria-hidden="true" focusable="false">
@@ -328,6 +380,7 @@
   </footer>
   <script src="js/main.js" defer></script>
   <script src="js/header.js" defer></script>
+  <script src="js/cart.js" defer></script>
   <script src="js/about.js" defer></script>
   <script src="js/contact.js" defer></script>
 </body>

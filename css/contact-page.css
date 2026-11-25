@@ -251,6 +251,7 @@ textarea.cp-field__control:not(:placeholder-shown) + .cp-field__label,
   margin-top: 34px;
 }
 .cp-sent[hidden] { display: none; }
+.cp-form[hidden] { display: none; }
 .cp-sent__icon {
   width: 52px;
   height: 52px;

@@ -7,6 +7,7 @@ Static site (HTML/CSS/vanilla JS, no build dependencies).
 - Shop page: `css|js/shop-hero.*` (banner + category tabs), `css|js/shop-listing.*` (filters, product data, grid, pagination), `css/shop-band.css`.
 - Contact: `src/partials/contact-page.html`, `css|js/contact-page.*` — form validates locally (no data is sent); `?type=general|orders|returns|partnerships|press` preselects the inquiry type. Reuses the shop bottom band.
 - Collections / About: `src/partials/<page>.html`, `css/<page>.css`, `js/<page>.js`; their banners reuse the shop banner classes from `css/shop-hero.css`. Tabs and sidebar talk via `shop:category` / `shop:category-sync` events on `document`; `?category=` and `?sort=newest|popular` URLs work.
+- Header (all pages): search submits to `shop.html?q=`; `js/cart.js` + `css/cart.css` provide the bag drawer (`window.NGCart`, `cart:add` event, saved in localStorage `nga-cart`; checkout is intentionally not live) and the account "coming soon" dialog. Shop: `?product=<id>` opens the quick view.
 - `css/base.css` — design tokens (colors, fonts, motion) shared by every section; `css/{header,hero,categories,contact}.css` — one file per section.
 - `js/main.js` — scroll reveal; `js/{header,hero,categories,contact}.js` — per-section behavior (sticky header, menu/search overlays, hero carousel, footer arrow draw-in).
 - `assets/img/` — images (copied from `streetwear-assets/`).
