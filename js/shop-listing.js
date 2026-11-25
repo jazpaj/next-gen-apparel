@@ -67,6 +67,10 @@
     $$('input[name="availability"]').forEach((i) => { i.checked = true; });
     searchWidened = true;
   }
+  // ?stock=pre-order (e.g. from the home page drop banner) shows pre-orders only
+  if (!state.query && params.get('stock') === 'pre-order') {
+    $$('input[name="availability"]').forEach((i) => { i.checked = i.value === 'pre-order'; });
+  }
 
   function setUrlParam(key, value) {
     try {
