@@ -1,5 +1,5 @@
 /* Cart: local bag (localStorage "nga-cart"), header badge, slide-in drawer, add toast.
-   No backend — checkout shows an honest "not live yet" message.
+   No backend — the drawer's Checkout button opens checkout.html (preview checkout).
 
    window.NGCart = { add(item), remove(key), setQty(key, qty), items(), count(), clear(), open(), close(), keyOf(item) }
    item = { id, name, price: number, image: url, size: string|null, color: string|null, qty: number = 1 }
@@ -208,10 +208,10 @@
       target && target.focus();
     });
 
+    // Footer (with this button) is hidden while the bag is empty; guard anyway.
     $('[data-cart-checkout]').addEventListener('click', () => {
-      msg.textContent = '';
-      // re-set on next frame so screen readers announce it again on repeat clicks
-      setTimeout(() => { msg.textContent = 'Checkout isn’t live yet — this is a preview store.'; }, 60);
+      if (!lines.length) return;
+      location.href = 'checkout.html';
     });
     const stayOnShop = (e) => {
       if (!onShop || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button > 0) return;

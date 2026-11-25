@@ -277,9 +277,59 @@
                 </span>
               </a>
             </li>
+            <li class="cp-row">
+              <a class="cp-row__link" href="contact.html#track" data-track-jump>
+                <span class="cp-row__box" aria-hidden="true">
+                  <svg class="cp-icon" viewBox="0 0 40 40" focusable="false"><path d="M20 6 33 12.5v15L20 34 7 27.5v-15z"/><path d="M7.5 12.8 20 19l12.5-6.2M20 19v15"/><path d="M13.5 9.3l13 6.4"/></svg>
+                </span>
+                <span class="cp-row__body">
+                  <span class="cp-row__title">Track order</span>
+                  <span class="cp-row__text">Check your order status<br> and delivery estimate</span>
+                </span>
+              </a>
+            </li>
           </ul>
           <p class="cp-toast" role="status" aria-live="polite" data-chat-toast></p>
         </div>
+      </div>
+    </section>
+
+    <!-- Order tracking -->
+    <section class="cp-track" id="track" aria-labelledby="cp-track-title">
+      <div class="cp-track__inner container">
+        <div class="cp-track__intro reveal">
+          <span class="cp-rule" aria-hidden="true"></span>
+          <h2 class="cp-display cp-track__title" id="cp-track-title">Track your <span class="cp-accent">order</span></h2>
+          <p class="cp-track__copy">Enter your order number and the email you used at checkout.</p>
+        </div>
+
+        <div class="cp-track__panel reveal">
+          <form class="cp-track__form" action="contact.html#track" method="get" novalidate aria-labelledby="cp-track-title" data-track-form>
+            <div class="cp-field">
+              <input class="cp-field__control" type="text" id="cp-track-order" name="order" autocomplete="off" autocapitalize="characters" spellcheck="false" required placeholder="NGA-123456" aria-describedby="cp-track-order-error cp-track-hint">
+              <label class="cp-field__label" for="cp-track-order">Order number <span aria-hidden="true">*</span></label>
+              <p class="cp-field__error" id="cp-track-order-error" hidden></p>
+            </div>
+
+            <div class="cp-field">
+              <input class="cp-field__control" type="email" id="cp-track-email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required placeholder="name@example.com" aria-describedby="cp-track-email-error">
+              <label class="cp-field__label" for="cp-track-email">Email <span aria-hidden="true">*</span></label>
+              <p class="cp-field__error" id="cp-track-email-error" hidden></p>
+            </div>
+
+            <button class="cp-btn cp-btn--cream cp-track__submit" type="submit">
+              Track order
+              <svg class="cp-btn__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M14 6l6 6-6 6"/></svg>
+            </button>
+          </form>
+
+          <p class="cp-track__notfound" role="alert" data-track-notfound></p>
+
+          <p class="cp-track__hint" id="cp-track-hint">Preview store: orders placed on this device can be tracked here. Try
+            <button class="cp-track__sample" type="button" data-track-sample>NGA-100248 / demo@nextgenapparel.ph</button></p>
+        </div>
+
+        <div class="cp-track__result" aria-live="polite" data-track-result></div>
       </div>
     </section>
 
@@ -300,11 +350,11 @@
     <section class="cp-help container" aria-label="Help topics">
       <ul class="cp-help__list reveal">
         <li class="cp-help__item">
-          <a class="cp-help__link" href="contact.html?type=orders#message-form" data-inquiry="orders">
+          <a class="cp-help__link" href="contact.html#track" data-track-jump>
             <svg class="cp-icon cp-help__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M4 12h24v21H4z"/><path d="M28 18h8l6 7v8h-14"/><circle cx="12" cy="35" r="4"/><circle cx="35" cy="35" r="4"/><path d="M16 33.5h15M31 25h11"/></svg>
             <span class="cp-help__body">
               <span class="cp-help__title">Shipping support</span>
-              <span class="cp-help__text">Questions about your order<br> or delivery?</span>
+              <span class="cp-help__text">Track your order or ask<br> about delivery.</span>
             </span>
           </a>
         </li>
@@ -444,6 +494,7 @@
   <script src="js/main.js" defer></script>
   <script src="js/header.js" defer></script>
   <script src="js/cart.js" defer></script>
+  <script src="js/orders.js" defer></script>
   <script src="js/contact-page.js" defer></script>
   <script src="js/contact.js" defer></script>
 </body>
