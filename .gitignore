@@ -1,0 +1,8 @@
+.DS_Store
+.claude/
+__pycache__/
+# source material (images already copied into assets/img)
+streetwear-assets/
+streetwear-assets.zip
+# design mockups used for reference only
+reference*.webp

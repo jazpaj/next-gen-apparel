@@ -1,0 +1,138 @@
+    <section class="listing" id="shop-listing" aria-labelledby="listing-title" data-listing>
+      <h2 id="listing-title" class="visually-hidden">All products</h2>
+      <div class="listing__inner">
+
+        <!-- Filters: static sidebar on desktop, off-canvas drawer ≤900px -->
+        <div class="listing__backdrop" data-filters-backdrop hidden></div>
+        <aside class="filters" id="shop-filters" aria-label="Filters" data-filters tabindex="-1">
+          <form class="filters__form" data-filters-form novalidate>
+            <div class="filters__head">
+              <p class="filters__title" id="filters-title">
+                <svg class="filters__mark" viewBox="0 0 22 12" aria-hidden="true" focusable="false"><path d="M5 0h5L5 12H0zM15 0h5l-5 12h-5z"/></svg>
+                Filters
+              </p>
+              <button class="filters__close" type="button" aria-label="Close filters" data-filters-close>
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+              </button>
+            </div>
+
+            <details class="fgroup" open>
+              <summary class="fgroup__summary">Availability<svg class="fgroup__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 15 6-6 6 6"/></svg></summary>
+              <fieldset class="fgroup__body">
+                <legend class="visually-hidden">Availability</legend>
+                <label class="check"><input type="checkbox" name="availability" value="in-stock" checked><span>In Stock (112)</span></label>
+                <label class="check"><input type="checkbox" name="availability" value="pre-order"><span>Pre-Order (18)</span></label>
+              </fieldset>
+            </details>
+
+            <details class="fgroup" open>
+              <summary class="fgroup__summary">Category<svg class="fgroup__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 15 6-6 6 6"/></svg></summary>
+              <fieldset class="fgroup__body">
+                <legend class="visually-hidden">Category</legend>
+                <label class="check"><input type="checkbox" name="category" value="hoodies"><span>Hoodies (28)</span></label>
+                <label class="check"><input type="checkbox" name="category" value="jackets"><span>Jackets (24)</span></label>
+                <label class="check"><input type="checkbox" name="category" value="tees"><span>Tees (20)</span></label>
+                <label class="check"><input type="checkbox" name="category" value="pants"><span>Pants (18)</span></label>
+                <label class="check"><input type="checkbox" name="category" value="accessories"><span>Accessories (12)</span></label>
+              </fieldset>
+            </details>
+
+            <details class="fgroup" open>
+              <summary class="fgroup__summary">Size<svg class="fgroup__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 15 6-6 6 6"/></svg></summary>
+              <div class="fgroup__body sizes" role="group" aria-label="Size">
+                <button class="size" type="button" aria-pressed="false" data-size="XS">XS</button>
+                <button class="size" type="button" aria-pressed="false" data-size="S">S</button>
+                <button class="size" type="button" aria-pressed="false" data-size="M">M</button>
+                <button class="size" type="button" aria-pressed="false" data-size="L">L</button>
+                <button class="size" type="button" aria-pressed="false" data-size="XL">XL</button>
+                <button class="size" type="button" aria-pressed="false" data-size="2XL">2XL</button>
+              </div>
+            </details>
+
+            <details class="fgroup" open>
+              <summary class="fgroup__summary">Color<svg class="fgroup__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 15 6-6 6 6"/></svg></summary>
+              <div class="fgroup__body swatches" role="group" aria-label="Color">
+                <button class="swatch" type="button" aria-pressed="false" aria-label="Cream" data-color="cream" style="--swatch: var(--c-cream)"></button>
+                <button class="swatch" type="button" aria-pressed="false" aria-label="Black" data-color="black" style="--swatch: var(--c-ink)"></button>
+                <button class="swatch" type="button" aria-pressed="false" aria-label="Grey" data-color="grey" style="--swatch: color-mix(in srgb, var(--c-cream) 52%, var(--c-bg))"></button>
+                <button class="swatch" type="button" aria-pressed="false" aria-label="Orange" data-color="orange" style="--swatch: var(--c-orange)"></button>
+                <!-- product colour (not a brand colour) -->
+                <button class="swatch" type="button" aria-pressed="false" aria-label="Olive" data-color="olive" style="--swatch: #5f6326"></button>
+              </div>
+            </details>
+
+            <details class="fgroup" open>
+              <summary class="fgroup__summary">Price<svg class="fgroup__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 15 6-6 6 6"/></svg></summary>
+              <div class="fgroup__body price" role="group" aria-label="Price range" data-price>
+                <div class="price__track">
+                  <span class="price__fill" data-price-fill></span>
+                  <input class="price__input" type="range" min="0" max="300" step="10" value="0" aria-label="Minimum price" data-price-min>
+                  <input class="price__input" type="range" min="0" max="300" step="10" value="300" aria-label="Maximum price" data-price-max>
+                </div>
+                <p class="price__labels" aria-hidden="true"><span data-price-min-label>$0</span><span data-price-max-label>$300+</span></p>
+              </div>
+            </details>
+
+            <div class="filters__foot">
+              <button class="filters__clear" type="button" data-filters-clear>
+                Clear filters
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M19.8 4v4h-4"/></svg>
+              </button>
+              <button class="filters__apply" type="button" data-filters-close>Show <span data-apply-count>124</span> products</button>
+            </div>
+          </form>
+        </aside>
+
+        <!-- Results -->
+        <div class="results">
+          <div class="toolbar">
+            <button class="toolbar__filters" type="button" aria-expanded="false" aria-controls="shop-filters" data-filters-open>
+              <svg class="filters__mark" viewBox="0 0 22 12" aria-hidden="true" focusable="false"><path d="M5 0h5L5 12H0zM15 0h5l-5 12h-5z"/></svg>
+              Filters
+            </button>
+            <p class="toolbar__count" aria-live="polite" aria-atomic="true" data-count>124 Products</p>
+            <div class="toolbar__sort">
+              <label class="toolbar__sort-label" for="shop-sort">Sort by:</label>
+              <span class="select">
+                <select id="shop-sort" data-sort>
+                  <option value="newest">Newest</option>
+                  <option value="price-asc">Price: Low–High</option>
+                  <option value="price-desc">Price: High–Low</option>
+                  <option value="popular">Popular</option>
+                </select>
+                <svg class="select__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <div class="toolbar__view" role="group" aria-label="Layout">
+              <button class="view-btn" type="button" aria-pressed="true" aria-label="Grid view" data-view="grid">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="6.5" height="6.5"/><rect x="13.5" y="4" width="6.5" height="6.5"/><rect x="4" y="13.5" width="6.5" height="6.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5"/></svg>
+              </button>
+              <button class="view-btn" type="button" aria-pressed="false" aria-label="List view" data-view="list">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.01M4.5 12h.01M4.5 18h.01" stroke-width="2.4"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <ul class="grid" role="list" data-grid>
+            <li class="promo" data-promo>
+              <a class="promo__link" href="shop.html?sort=newest">
+                <span class="promo__frame">
+                  <img class="promo__img" src="assets/img/new-arrivals.webp" width="501" height="283" alt="" loading="lazy" decoding="async">
+                </span>
+                <span class="promo__label">New<br>Arrivals</span>
+                <svg class="promo__arrow" viewBox="0 0 64 12" aria-hidden="true" focusable="false"><path d="M0 6h40M50 6h12M57 1l5 5-5 5"/></svg>
+              </a>
+            </li>
+            <!-- product cards are rendered by js/shop-listing.js -->
+          </ul>
+
+          <div class="empty" data-empty hidden>
+            <p class="empty__title">No products match these filters.</p>
+            <p class="empty__text">Try widening the price range or removing a size or colour.</p>
+            <button class="empty__btn" type="button" data-filters-clear>Clear filters</button>
+          </div>
+
+          <nav class="pager" aria-label="Pagination" data-pager></nav>
+        </div>
+      </div>
+    </section>

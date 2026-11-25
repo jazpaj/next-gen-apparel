@@ -1,0 +1,99 @@
+    <section class="hero" id="hero" aria-roledescription="carousel" aria-label="Featured collections">
+      <svg class="hero__defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <filter id="hero-rough" x="-5%" y="-40%" width="110%" height="180%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+        </filter>
+      </svg>
+
+      <div class="hero__slides" id="hero-slides" aria-live="off">
+        <!-- Slide 1 -->
+        <div class="hero__slide is-active" id="hero-slide-1" role="group" aria-roledescription="slide" aria-label="1 of 4">
+          <figure class="hero__media">
+            <img class="hero__img" src="assets/img/hero-model.webp" width="864" height="480" fetchpriority="high" decoding="async"
+                 alt="Model in a black technical jacket looking down at the camera, framed by an orange panel and a concrete pillar">
+          </figure>
+          <div class="hero__content container">
+            <h1 class="hero__title">
+              <span class="hero__line hero__line--1">Next</span>
+              <span class="hero__line hero__line--2">Gen</span>
+              <span class="hero__line hero__line--3">Apparel</span>
+              <svg class="hero__swoosh" viewBox="0 0 350 52" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path class="hero__swoosh-path" pathLength="1" d="M2 49 C 60 37, 140 20, 206 8 C 214 7, 214 11, 205 15 C 185 25, 160 35, 150 43 C 146 47, 150 47, 160 44 C 230 28, 290 14, 348 4"/>
+                <path class="hero__swoosh-path hero__swoosh-path--thin" pathLength="1" d="M40 44 C 100 32, 160 20, 204 11 M 156 44 C 220 30, 280 16, 344 7"/>
+              </svg>
+            </h1>
+            <p class="hero__tags">Streetwear <span aria-hidden="true">/</span> Techwear <span aria-hidden="true">/</span> Everyday</p>
+            <a class="hero__cta" href="shop.html">Shop now <svg class="hero__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M14 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero__slide" id="hero-slide-2" role="group" aria-roledescription="slide" aria-label="2 of 4" aria-hidden="true" inert>
+          <figure class="hero__media">
+            <img class="hero__img" src="assets/img/hero-model.webp" width="864" height="480" loading="lazy" decoding="async"
+                 alt="Close crop of a technical jacket with buckle straps and an orange tab">
+          </figure>
+          <div class="hero__content container">
+            <p class="hero__title">
+              <span class="hero__line hero__line--1">Tech</span>
+              <span class="hero__line hero__line--2">Wear</span>
+              <span class="hero__line hero__line--3">System</span>
+            </p>
+            <p class="hero__tags">Layers <span aria-hidden="true">/</span> Shells <span aria-hidden="true">/</span> Utility</p>
+            <a class="hero__cta" href="#collections">Explore <svg class="hero__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M14 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero__slide" id="hero-slide-3" role="group" aria-roledescription="slide" aria-label="3 of 4" aria-hidden="true" inert>
+          <figure class="hero__media">
+            <img class="hero__img" src="assets/img/hero-model.webp" width="864" height="480" loading="lazy" decoding="async"
+                 alt="Monochrome portrait of the model against a brutalist concrete pillar">
+          </figure>
+          <div class="hero__content container">
+            <p class="hero__title">
+              <span class="hero__line hero__line--1">Built</span>
+              <span class="hero__line hero__line--2">For The</span>
+              <span class="hero__line hero__line--3">City</span>
+            </p>
+            <p class="hero__tags">Concrete <span aria-hidden="true">/</span> Rain <span aria-hidden="true">/</span> Night</p>
+            <a class="hero__cta" href="shop.html">Shop now <svg class="hero__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M14 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="hero__slide" id="hero-slide-4" role="group" aria-roledescription="slide" aria-label="4 of 4" aria-hidden="true" inert>
+          <figure class="hero__media">
+            <img class="hero__img" src="assets/img/hero-model.webp" width="864" height="480" loading="lazy" decoding="async"
+                 alt="Model in a black jacket and curly hair, warm-toned portrait">
+          </figure>
+          <div class="hero__content container">
+            <p class="hero__title">
+              <span class="hero__line hero__line--1">Every</span>
+              <span class="hero__line hero__line--2">Day</span>
+              <span class="hero__line hero__line--3">Uniform</span>
+            </p>
+            <p class="hero__tags">Essentials <span aria-hidden="true">/</span> Fleece <span aria-hidden="true">/</span> Tees</p>
+            <a class="hero__cta" href="shop.html">Shop now <svg class="hero__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h17M14 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__dashes container">
+        <div class="hero__dash-row" role="group" aria-label="Choose slide">
+          <button class="hero__dash" type="button" aria-controls="hero-slides" aria-label="Go to slide 1" aria-current="true" data-go="0"></button>
+          <button class="hero__dash" type="button" aria-controls="hero-slides" aria-label="Go to slide 2" data-go="1"></button>
+          <button class="hero__dash" type="button" aria-controls="hero-slides" aria-label="Go to slide 3" data-go="2"></button>
+          <button class="hero__dash" type="button" aria-controls="hero-slides" aria-label="Go to slide 4" data-go="3"></button>
+        </div>
+      </div>
+
+      <div class="hero__counter" role="group" aria-label="Slide counter">
+        <button class="hero__num" type="button" aria-controls="hero-slides" aria-label="Go to slide 1" aria-current="true" data-go="0">01</button>
+        <button class="hero__num" type="button" aria-controls="hero-slides" aria-label="Go to slide 2" data-go="1">02</button>
+        <button class="hero__num" type="button" aria-controls="hero-slides" aria-label="Go to slide 3" data-go="2">03</button>
+        <button class="hero__num" type="button" aria-controls="hero-slides" aria-label="Go to slide 4" data-go="3">04</button>
+        <span class="hero__track" aria-hidden="true"><span class="hero__track-fill"></span></span>
+      </div>
+    </section>

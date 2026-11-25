@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Category cards
+   ========================================================================== */
+.categories {
+  position: relative;
+  background: var(--c-bg);
+  padding-block: clamp(14px, 1.6vw, 24px);
+  border-bottom: 1px solid var(--c-line);
+}
+
+.categories__track {
+  display: grid;
+  grid-template-columns: 1.27fr 1fr 1.15fr;
+  gap: clamp(12px, 1.35vw, 20px);
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(24px, 5.1vw, 74px);
+}
+
+.categories__item { min-width: 0; }
+
+/* Decorative crosshairs */
+.categories__mark {
+  position: absolute; top: 50%;
+  width: 26px; height: 26px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.categories__mark::before, .categories__mark::after {
+  content: ""; position: absolute; background: var(--c-muted); opacity: .7;
+}
+.categories__mark::before { left: 0; right: 0; top: 50%; height: 1px; }
+.categories__mark::after { top: 0; bottom: 0; left: 50%; width: 1px; }
+.categories__mark--left { left: clamp(14px, 2.35vw, 34px); }
+.categories__mark--right { left: auto; right: clamp(14px, 2.35vw, 34px); transform: translate(50%, -50%); }
+
+/* Card ------------------------------------------------------------------- */
+.cat-card {
+  position: relative;
+  display: block;
+  height: clamp(200px, 18.6vw, 300px);
+  overflow: hidden;
+  border: 1px solid var(--c-line-strong);
+  background: var(--c-surface);
+  isolation: isolate;
+}
+.cat-card__img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  --z: 1.001;
+  transform: scale(var(--z));
+  transform-origin: 0 0;
+  transition: transform var(--dur-slow) var(--ease-out);
+  z-index: -1;
+}
+.cat-card__img--new { object-position: 0 0; --z: 1.18; }
+.cat-card__img--col { object-position: 50% 40%; --z: 1.2; transform-origin: 40% 30%; }
+.cat-card__img--best { object-position: 0 0; --z: 1.26; }
+/* light concrete wash behind the "Best Sellers" label so ink stays legible */
+.cat-card--best::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--c-cream-2) 55%, transparent) 0%, color-mix(in srgb, var(--c-cream-2) 30%, transparent) 30%, transparent 48%);
+}
+
+.cat-card__label {
+  position: absolute;
+  left: clamp(14px, 1.65vw, 24px);
+  bottom: clamp(18px, 2.2vw, 32px);
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(18px, 1.9vw, 27px);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+.cat-card--light .cat-card__label { color: var(--c-ink); }
+.cat-card--dark .cat-card__label { color: var(--c-cream); }
+
+.cat-card__arrow {
+  position: absolute;
+  right: clamp(14px, 1.9vw, 28px);
+  bottom: clamp(18px, 2.2vw, 32px);
+  width: clamp(26px, 2.4vw, 36px);
+  height: auto;
+  fill: none; stroke: currentColor; stroke-width: 1.6;
+  transition: transform var(--dur) var(--ease-out), opacity var(--dur) var(--ease-out);
+}
+.cat-card--light .cat-card__arrow { color: var(--c-ink); }
+.cat-card--dark .cat-card__arrow { color: var(--c-cream); }
+.cat-card--hover-arrow .cat-card__arrow { opacity: 0; transform: translateX(-6px); }
+
+/* Orange bar */
+.cat-card::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 3px;
+  background: var(--c-orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .cat-card:hover .cat-card__img { transform: scale(calc(var(--z) * 1.05)); }
+  .cat-card:hover .cat-card__arrow { opacity: 1; transform: translateX(6px); }
+  .cat-card:hover::after { transform: scaleX(1); }
+}
+.cat-card:focus-visible .cat-card__img { transform: scale(calc(var(--z) * 1.05)); }
+.cat-card:focus-visible .cat-card__arrow { opacity: 1; transform: translateX(6px); }
+.cat-card:focus-visible::after { transform: scaleX(1); }
+.cat-card:focus-visible { outline: 2px solid var(--c-orange); outline-offset: 3px; }
+.cat-card:active .cat-card__img { transform: scale(calc(var(--z) * 1.03)); transition-duration: var(--dur-fast); }
+
+/* Mobile: horizontal scroll-snap row ------------------------------------- */
+@media (max-width: 900px) {
+  .categories__mark { display: none; }
+  .categories__track {
+    display: flex;
+    gap: 12px;
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .categories__track::-webkit-scrollbar { display: none; }
+  .categories__item { flex: 0 0 78vw; max-width: 420px; scroll-snap-align: start; }
+  .cat-card { height: auto; aspect-ratio: 16 / 10; }
+  .cat-card--hover-arrow .cat-card__arrow { opacity: 1; transform: none; }
+}

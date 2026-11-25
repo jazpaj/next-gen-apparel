@@ -1,0 +1,35 @@
+    <div class="shop-band" role="presentation" aria-hidden="true">
+      <svg class="shop-band__art" viewBox="0 0 1199 182" preserveAspectRatio="xMidYMax slice" focusable="false">
+        <defs>
+          <linearGradient id="sb-fade-y" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset="0.3" stop-color="#fff" stop-opacity="0.85"/>
+            <stop offset="0.55" stop-color="#fff" stop-opacity="1"/>
+          </linearGradient>
+          <linearGradient id="sb-fade-x" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset="0.18" stop-color="#fff" stop-opacity="1"/>
+            <stop offset="0.75" stop-color="#fff" stop-opacity="1"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <mask id="sb-mask-y" maskUnits="userSpaceOnUse" x="-100" y="0" width="1400" height="182">
+            <rect x="-100" y="30" width="1400" height="152" fill="url(#sb-fade-y)"/>
+          </mask>
+          <mask id="sb-mask-x" maskUnits="userSpaceOnUse" x="-100" y="0" width="1400" height="200">
+            <rect x="300" y="0" width="520" height="200" fill="url(#sb-fade-x)"/>
+          </mask>
+          <clipPath id="sb-clip">
+            <polygon points="663,182 1146,62 1199,91 1199,182"/>
+          </clipPath>
+        </defs>
+        <g class="shop-band__mountains" mask="url(#sb-mask-y)">
+          <image href="assets/img/mountain-texture.webp" x="-60" y="40" width="460" height="152" preserveAspectRatio="xMidYMin slice"/>
+          <image href="assets/img/mountain-texture.webp" x="300" y="36" width="520" height="160" preserveAspectRatio="xMidYMin slice" mask="url(#sb-mask-x)"/>
+        </g>
+        <g clip-path="url(#sb-clip)">
+          <image class="shop-band__concrete" href="assets/img/concrete-architecture.webp" transform="translate(1630 62) scale(-1 1)" x="0" y="0" width="967" height="210" preserveAspectRatio="none"/>
+          <polygon class="shop-band__face" points="1146,62 1199,91 1199,182 1146,182"/>
+        </g>
+        <polyline class="shop-band__line" pathLength="1" points="862,128 900,92 1010,74 1040,42 1199,4"/>
+      </svg>
+    </div>

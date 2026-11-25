@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop — /// Next Gen Apparel</title>
+  <meta name="description" content="Shop the drop: hoodies, jackets, tees, pants and accessories from Next Gen Apparel. Latest releases, core essentials and limited drops.">
+  <meta name="theme-color" content="#0c0c0c">
+  <meta property="og:title" content="Next Gen Apparel">
+  <meta property="og:description" content="Streetwear / Techwear / Everyday.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/hero-model.webp">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0c0c'/%3E%3Cpath d='M6 24 12 8h3L9 24zm7 0 6-16h3l-6 16zm7 0 6-16h3l-6 16z' fill='%23f2ede3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero-model.webp">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/shop-hero.css">
+  <link rel="stylesheet" href="css/shop-listing.css">
+  <link rel="stylesheet" href="css/shop-band.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <script>document.documentElement.classList.replace('no-js','js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header" data-header>
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="Next Gen Apparel — home">
+        <svg class="logo-mark" viewBox="0 0 88 32" aria-hidden="true" focusable="false">
+          <path d="M27 0h12L12 32H0z"/>
+          <path d="M51 0h12L36 32H24z"/>
+          <path d="M75 0h12L60 32H48z"/>
+        </svg>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="shop.html" data-nav="shop" aria-current="page">Shop</a></li>
+          <li><a class="site-nav__link" href="collections.html" data-nav="collections">Collections</a></li>
+          <li><a class="site-nav__link" href="about.html" data-nav="about">About</a></li>
+          <li><a class="site-nav__link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button class="header-btn" type="button" aria-label="Search" aria-expanded="false" aria-controls="header-search" data-search-toggle>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+        </button>
+        <a class="header-btn" href="#" aria-label="Account">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="7.5" r="4"/><path d="M4.5 20.5v-1.2a4.3 4.3 0 0 1 4.3-4.3h6.4a4.3 4.3 0 0 1 4.3 4.3v1.2z"/></svg>
+        </a>
+        <a class="header-btn header-btn--bag" href="#" aria-label="Bag, 1 item">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 8h14l-.9 11.2a1.4 1.4 0 0 1-1.4 1.3H7.3a1.4 1.4 0 0 1-1.4-1.3z"/><path d="M9 10V6.5a3 3 0 0 1 6 0V10"/></svg>
+          <span class="header-btn__badge" aria-hidden="true"></span>
+          <span class="visually-hidden">1 item in bag</span>
+        </a>
+        <button class="header-btn header-btn--menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu-overlay" data-menu-toggle>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 6h17M3.5 12h17M3.5 18h17"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="header-search" id="header-search" hidden>
+      <form class="header-search__form" role="search" action="#" onsubmit="return false">
+        <label class="visually-hidden" for="header-search-input">Search products</label>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+        <input class="header-search__input" id="header-search-input" type="search" name="q" placeholder="Search hoodies, jackets, cargos…" autocomplete="off">
+        <button class="header-btn" type="button" aria-label="Close search" data-search-close>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </form>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menu-overlay" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+    <div class="menu-overlay__top">
+      <span class="menu-overlay__mark" aria-hidden="true">
+        <svg class="logo-mark" viewBox="0 0 88 32" focusable="false"><path d="M27 0h12L12 32H0z"/><path d="M51 0h12L36 32H24z"/><path d="M75 0h12L60 32H48z"/></svg>
+      </span>
+      <button class="header-btn menu-overlay__close" type="button" aria-label="Close menu" data-menu-close>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5 5 19"/></svg>
+      </button>
+    </div>
+    <nav class="menu-overlay__nav" aria-label="Menu">
+      <ul class="menu-overlay__list">
+        <li style="--i:0"><a class="menu-overlay__link" href="shop.html" data-nav="shop" aria-current="page"><span class="menu-overlay__num">01</span>Shop</a></li>
+        <li style="--i:1"><a class="menu-overlay__link" href="collections.html" data-nav="collections"><span class="menu-overlay__num">02</span>Collections</a></li>
+        <li style="--i:2"><a class="menu-overlay__link" href="about.html" data-nav="about"><span class="menu-overlay__num">03</span>About</a></li>
+        <li style="--i:3"><a class="menu-overlay__link" href="#contact"><span class="menu-overlay__num">04</span>Contact</a></li>
+      </ul>
+    </nav>
+    <p class="menu-overlay__foot">Streetwear <span aria-hidden="true">/</span> Techwear <span aria-hidden="true">/</span> Everyday</p>
+  </div>
+  <main id="main">
+    <section class="shop-hero" id="shop-hero" aria-labelledby="shop-hero-title">
+      <svg class="shop-hero__defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <filter id="shop-hero-rough" x="-5%" y="-40%" width="110%" height="180%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+        </filter>
+      </svg>
+
+      <div class="shop-hero__banner">
+        <figure class="shop-hero__media">
+          <img class="shop-hero__img" src="assets/img/hero-model.webp" width="864" height="480" fetchpriority="high" decoding="async"
+               alt="Model in a black technical jacket looking down at the camera, framed by an orange panel and a concrete pillar">
+        </figure>
+
+        <div class="shop-hero__content container">
+          <nav class="shop-hero__crumbs" aria-label="Breadcrumb">
+            <ol class="shop-hero__crumb-list">
+              <li><a class="shop-hero__crumb-home" href="index.html" aria-label="Home">/</a></li>
+              <li><span aria-current="page">Shop</span></li>
+            </ol>
+          </nav>
+
+          <h1 class="shop-hero__title" id="shop-hero-title">
+            <span class="shop-hero__line">Shop</span>
+            <span class="shop-hero__line shop-hero__line--2">The Drop</span>
+            <svg class="shop-hero__swoosh" viewBox="0 0 350 52" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <path class="shop-hero__swoosh-path" pathLength="1" d="M2 49 C 60 37, 140 20, 206 8 C 214 7, 214 11, 205 15 C 185 25, 160 35, 150 43 C 146 47, 150 47, 160 44 C 230 28, 290 14, 348 4"/>
+              <path class="shop-hero__swoosh-path shop-hero__swoosh-path--thin" pathLength="1" d="M40 44 C 100 32, 160 20, 204 11 M 156 44 C 220 30, 280 16, 344 7"/>
+            </svg>
+          </h1>
+
+          <p class="shop-hero__sub">Latest releases, core essentials,<br> and limited drops.</p>
+        </div>
+      </div>
+
+      <div class="shop-hero__tabs-wrap container">
+        <div class="shop-tabs" role="toolbar" aria-label="Product categories" data-shop-tabs>
+          <button class="shop-tabs__tab" type="button" data-category="all" aria-pressed="true">
+            <svg class="shop-tabs__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <rect x="5" y="5" width="9" height="9" rx="1.2"/><rect x="18" y="5" width="9" height="9" rx="1.2"/>
+              <rect x="5" y="18" width="9" height="9" rx="1.2"/><rect x="18" y="18" width="9" height="9" rx="1.2"/>
+            </svg>
+            <span class="shop-tabs__label">All products</span>
+          </button>
+          <button class="shop-tabs__tab" type="button" data-category="hoodies" aria-pressed="false">
+            <svg class="shop-tabs__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M12.5 5.5C10 6.5 9 8.5 9 11l-3.5 2L3 25.5l3.5 1 2-8.5V28h15V18l2 8.5 3.5-1L26.5 13 23 11c0-2.5-1-4.5-3.5-5.5"/>
+              <path d="M12.5 5.5c.8-1.2 2.1-1.8 3.5-1.8s2.7.6 3.5 1.8c1.2 1.8.6 4.6-1 6.2L16 14l-2.5-2.3c-1.6-1.6-2.2-4.4-1-6.2z"/>
+              <path d="M14.8 13v3.2M17.2 13v3.2M11 22.5h10M16 14v8.5"/>
+            </svg>
+            <span class="shop-tabs__label">Hoodies</span>
+          </button>
+          <button class="shop-tabs__tab" type="button" data-category="jackets" aria-pressed="false">
+            <svg class="shop-tabs__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M12 4.5 8.5 7 5 9.5 3.5 26l3.5.8 1.5-11V28h15V15.8l1.5 11 3.5-.8L27 9.5 23.5 7 20 4.5"/>
+              <path d="M12 4.5h8l-1.5 3.5L16 9.5 13.5 8z"/>
+              <path d="M16 9.5V28M12 4.5 13 12l3-2.5M20 4.5 19 12l-3-2.5M10.5 17h3.5M18 17h3.5M10.5 22h3.5M18 22h3.5"/>
+            </svg>
+            <span class="shop-tabs__label">Jackets</span>
+          </button>
+          <button class="shop-tabs__tab" type="button" data-category="tees" aria-pressed="false">
+            <svg class="shop-tabs__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M12 5 6.5 7 2.5 12.5l4 3 2.5-2.5V27h14V13l2.5 2.5 4-3L25.5 7 20 5c-.5 1.8-2 3-4 3s-3.5-1.2-4-3z"/>
+              <path d="M9 13V9M23 13V9"/>
+            </svg>
+            <span class="shop-tabs__label">Tees</span>
+          </button>
+          <button class="shop-tabs__tab" type="button" data-category="pants" aria-pressed="false">
+            <svg class="shop-tabs__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M9 4h14l1.5 24h-6L16 11.5 13.5 28h-6z"/>
+              <path d="M9 7.5h14M16 7.5v4M11.5 7.5c0 2-1 3.5-2.6 4M20.5 7.5c0 2 1 3.5 2.6 4"/>
+            </svg>
+            <span class="shop-tabs__label">Pants</span>
+          </button>
+          <button class="shop-tabs__tab" type="button" data-category="accessories" aria-pressed="false">
+            <svg class="shop-tabs__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M9 21c0-7.5 4.5-12 10-12s9.5 4 9.5 10.5V21"/>
+              <path d="M9 21c6.5-1.6 13-1.6 19.5 0"/>
+              <path d="M9 21c-2.6.4-5 1.4-6 2.9 3.2 1 7.4.6 11.5-1.6"/>
+              <path d="M19 9c-2.8 2.8-4.2 6.6-4.3 11M19 9c2.4 2.6 3.6 6.3 3.8 10.6M19 8v1"/>
+            </svg>
+            <span class="shop-tabs__label">Accessories</span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="listing" id="shop-listing" aria-labelledby="listing-title" data-listing>
+      <h2 id="listing-title" class="visually-hidden">All products</h2>
+      <div class="listing__inner">
+
+        <!-- Filters: static sidebar on desktop, off-canvas drawer ≤900px -->
+        <div class="listing__backdrop" data-filters-backdrop hidden></div>
+        <aside class="filters" id="shop-filters" aria-label="Filters" data-filters tabindex="-1">
+          <form class="filters__form" data-filters-form novalidate>
+            <div class="filters__head">
+              <p class="filters__title" id="filters-title">
+                <svg class="filters__mark" viewBox="0 0 22 12" aria-hidden="true" focusable="false"><path d="M5 0h5L5 12H0zM15 0h5l-5 12h-5z"/></svg>
+                Filters
+              </p>
+              <button class="filters__close" type="button" aria-label="Close filters" data-filters-close>
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+              </button>
+            </div>
+
+            <details class="fgroup" open>
+              <summary class="fgroup__summary">Availability<svg class="fgroup__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 15 6-6 6 6"/></svg></summary>
+              <fieldset class="fgroup__body">
+                <legend class="visually-hidden">Availability</legend>
+                <label class="check"><input type="checkbox" name="availability" value="in-stock" checked><span>In Stock (112)</span></label>
+                <label class="check"><input type="checkbox" name="availability" value="pre-order"><span>Pre-Order (18)</span></label>
+              </fieldset>
+            </details>
+
+            <details class="fgroup" open>
+              <summary class="fgroup__summary">Category<svg class="fgroup__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 15 6-6 6 6"/></svg></summary>
+              <fieldset class="fgroup__body">
+                <legend class="visually-hidden">Category</legend>
+                <label class="check"><input type="checkbox" name="category" value="hoodies"><span>Hoodies (28)</span></label>
+                <label class="check"><input type="checkbox" name="category" value="jackets"><span>Jackets (24)</span></label>
+                <label class="check"><input type="checkbox" name="category" value="tees"><span>Tees (20)</span></label>
+                <label class="check"><input type="checkbox" name="category" value="pants"><span>Pants (18)</span></label>
+                <label class="check"><input type="checkbox" name="category" value="accessories"><span>Accessories (12)</span></label>
+              </fieldset>
+            </details>
+
+            <details class="fgroup" open>
+              <summary class="fgroup__summary">Size<svg class="fgroup__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 15 6-6 6 6"/></svg></summary>
+              <div class="fgroup__body sizes" role="group" aria-label="Size">
+                <button class="size" type="button" aria-pressed="false" data-size="XS">XS</button>
+                <button class="size" type="button" aria-pressed="false" data-size="S">S</button>
+                <button class="size" type="button" aria-pressed="false" data-size="M">M</button>
+                <button class="size" type="button" aria-pressed="false" data-size="L">L</button>
+                <button class="size" type="button" aria-pressed="false" data-size="XL">XL</button>
+                <button class="size" type="button" aria-pressed="false" data-size="2XL">2XL</button>
+              </div>
+            </details>
+
+            <details class="fgroup" open>
+              <summary class="fgroup__summary">Color<svg class="fgroup__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 15 6-6 6 6"/></svg></summary>
+              <div class="fgroup__body swatches" role="group" aria-label="Color">
+                <button class="swatch" type="button" aria-pressed="false" aria-label="Cream" data-color="cream" style="--swatch: var(--c-cream)"></button>
+                <button class="swatch" type="button" aria-pressed="false" aria-label="Black" data-color="black" style="--swatch: var(--c-ink)"></button>
+                <button class="swatch" type="button" aria-pressed="false" aria-label="Grey" data-color="grey" style="--swatch: color-mix(in srgb, var(--c-cream) 52%, var(--c-bg))"></button>
+                <button class="swatch" type="button" aria-pressed="false" aria-label="Orange" data-color="orange" style="--swatch: var(--c-orange)"></button>
+                <!-- product colour (not a brand colour) -->
+                <button class="swatch" type="button" aria-pressed="false" aria-label="Olive" data-color="olive" style="--swatch: #5f6326"></button>
+              </div>
+            </details>
+
+            <details class="fgroup" open>
+              <summary class="fgroup__summary">Price<svg class="fgroup__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 15 6-6 6 6"/></svg></summary>
+              <div class="fgroup__body price" role="group" aria-label="Price range" data-price>
+                <div class="price__track">
+                  <span class="price__fill" data-price-fill></span>
+                  <input class="price__input" type="range" min="0" max="300" step="10" value="0" aria-label="Minimum price" data-price-min>
+                  <input class="price__input" type="range" min="0" max="300" step="10" value="300" aria-label="Maximum price" data-price-max>
+                </div>
+                <p class="price__labels" aria-hidden="true"><span data-price-min-label>$0</span><span data-price-max-label>$300+</span></p>
+              </div>
+            </details>
+
+            <div class="filters__foot">
+              <button class="filters__clear" type="button" data-filters-clear>
+                Clear filters
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3"/><path d="M19.8 4v4h-4"/></svg>
+              </button>
+              <button class="filters__apply" type="button" data-filters-close>Show <span data-apply-count>124</span> products</button>
+            </div>
+          </form>
+        </aside>
+
+        <!-- Results -->
+        <div class="results">
+          <div class="toolbar">
+            <button class="toolbar__filters" type="button" aria-expanded="false" aria-controls="shop-filters" data-filters-open>
+              <svg class="filters__mark" viewBox="0 0 22 12" aria-hidden="true" focusable="false"><path d="M5 0h5L5 12H0zM15 0h5l-5 12h-5z"/></svg>
+              Filters
+            </button>
+            <p class="toolbar__count" aria-live="polite" aria-atomic="true" data-count>124 Products</p>
+            <div class="toolbar__sort">
+              <label class="toolbar__sort-label" for="shop-sort">Sort by:</label>
+              <span class="select">
+                <select id="shop-sort" data-sort>
+                  <option value="newest">Newest</option>
+                  <option value="price-asc">Price: Low–High</option>
+                  <option value="price-desc">Price: High–Low</option>
+                  <option value="popular">Popular</option>
+                </select>
+                <svg class="select__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </div>
+            <div class="toolbar__view" role="group" aria-label="Layout">
+              <button class="view-btn" type="button" aria-pressed="true" aria-label="Grid view" data-view="grid">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="6.5" height="6.5"/><rect x="13.5" y="4" width="6.5" height="6.5"/><rect x="4" y="13.5" width="6.5" height="6.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5"/></svg>
+              </button>
+              <button class="view-btn" type="button" aria-pressed="false" aria-label="List view" data-view="list">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4.5 6h.01M4.5 12h.01M4.5 18h.01" stroke-width="2.4"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <ul class="grid" role="list" data-grid>
+            <li class="promo" data-promo>
+              <a class="promo__link" href="shop.html?sort=newest">
+                <span class="promo__frame">
+                  <img class="promo__img" src="assets/img/new-arrivals.webp" width="501" height="283" alt="" loading="lazy" decoding="async">
+                </span>
+                <span class="promo__label">New<br>Arrivals</span>
+                <svg class="promo__arrow" viewBox="0 0 64 12" aria-hidden="true" focusable="false"><path d="M0 6h40M50 6h12M57 1l5 5-5 5"/></svg>
+              </a>
+            </li>
+            <!-- product cards are rendered by js/shop-listing.js -->
+          </ul>
+
+          <div class="empty" data-empty hidden>
+            <p class="empty__title">No products match these filters.</p>
+            <p class="empty__text">Try widening the price range or removing a size or colour.</p>
+            <button class="empty__btn" type="button" data-filters-clear>Clear filters</button>
+          </div>
+
+          <nav class="pager" aria-label="Pagination" data-pager></nav>
+        </div>
+      </div>
+    </section>
+    <div class="shop-band" role="presentation" aria-hidden="true">
+      <svg class="shop-band__art" viewBox="0 0 1199 182" preserveAspectRatio="xMidYMax slice" focusable="false">
+        <defs>
+          <linearGradient id="sb-fade-y" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset="0.3" stop-color="#fff" stop-opacity="0.85"/>
+            <stop offset="0.55" stop-color="#fff" stop-opacity="1"/>
+          </linearGradient>
+          <linearGradient id="sb-fade-x" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset="0.18" stop-color="#fff" stop-opacity="1"/>
+            <stop offset="0.75" stop-color="#fff" stop-opacity="1"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+          <mask id="sb-mask-y" maskUnits="userSpaceOnUse" x="-100" y="0" width="1400" height="182">
+            <rect x="-100" y="30" width="1400" height="152" fill="url(#sb-fade-y)"/>
+          </mask>
+          <mask id="sb-mask-x" maskUnits="userSpaceOnUse" x="-100" y="0" width="1400" height="200">
+            <rect x="300" y="0" width="520" height="200" fill="url(#sb-fade-x)"/>
+          </mask>
+          <clipPath id="sb-clip">
+            <polygon points="663,182 1146,62 1199,91 1199,182"/>
+          </clipPath>
+        </defs>
+        <g class="shop-band__mountains" mask="url(#sb-mask-y)">
+          <image href="assets/img/mountain-texture.webp" x="-60" y="40" width="460" height="152" preserveAspectRatio="xMidYMin slice"/>
+          <image href="assets/img/mountain-texture.webp" x="300" y="36" width="520" height="160" preserveAspectRatio="xMidYMin slice" mask="url(#sb-mask-x)"/>
+        </g>
+        <g clip-path="url(#sb-clip)">
+          <image class="shop-band__concrete" href="assets/img/concrete-architecture.webp" transform="translate(1630 62) scale(-1 1)" x="0" y="0" width="967" height="210" preserveAspectRatio="none"/>
+          <polygon class="shop-band__face" points="1146,62 1199,91 1199,182 1146,182"/>
+        </g>
+        <polyline class="shop-band__line" pathLength="1" points="862,128 900,92 1010,74 1040,42 1199,4"/>
+      </svg>
+    </div>
+  </main>
+  <footer class="site-footer" id="contact">
+    <div class="cf-stage">
+      <!-- Decorative collage pieces -->
+      <div class="cf-portrait" aria-hidden="true">
+        <img src="assets/img/footer-portrait.webp" alt="" width="633" height="480" loading="lazy" decoding="async">
+      </div>
+      <span class="cf-brackets" aria-hidden="true"></span>
+      <div class="cf-grunge" aria-hidden="true">
+        <img src="assets/img/orange-grunge.webp" alt="" width="399" height="212" loading="lazy" decoding="async">
+        <span class="cf-shard"></span>
+      </div>
+      <div class="cf-concrete" aria-hidden="true">
+        <img src="assets/img/concrete-architecture.webp" alt="" width="509" height="210" loading="lazy" decoding="async">
+      </div>
+      <div class="cf-mountain" aria-hidden="true">
+        <img src="assets/img/mountain-texture.webp" alt="" width="573" height="211" loading="lazy" decoding="async">
+      </div>
+      <div class="cf-cream">
+        <svg class="cf-slashes" viewBox="0 0 100 40" aria-hidden="true" focusable="false">
+          <path d="M16 0h6.5L6.5 40H0zM41 0h6.5L31.5 40H25zM66 0h6.5L56.5 40H50zM91 0h6.5L81.5 40H75z"/>
+        </svg>
+        <p class="cf-copy">&copy; 2026 Next Gen Apparel</p>
+      </div>
+
+      <!-- Nav column -->
+      <div class="cf-navcol">
+        <nav class="cf-nav" aria-label="Footer">
+          <ul>
+            <li><a href="shop.html">Shop <span class="cf-arrow" aria-hidden="true">&rarr;</span></a></li>
+            <li><a href="collections.html">Collections <span class="cf-arrow" aria-hidden="true">&rarr;</span></a></li>
+            <li><a href="about.html">About <span class="cf-arrow" aria-hidden="true">&rarr;</span></a></li>
+            <li><a href="#contact">Contact <span class="cf-arrow" aria-hidden="true">&rarr;</span></a></li>
+          </ul>
+        </nav>
+        <span class="cf-dash" aria-hidden="true"></span>
+        <ul class="cf-social">
+          <li><a href="https://instagram.com/" aria-label="Instagram" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" class="cf-si cf-si--stroke" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor"/></svg></a></li>
+          <li><a href="https://tiktok.com/" aria-label="TikTok" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" class="cf-si" aria-hidden="true" focusable="false"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.1v12.4a2.6 2.6 0 1 1-1.8-2.5V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.3-1.6z"/></svg></a></li>
+          <li><a href="https://youtube.com/" aria-label="YouTube" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" class="cf-si" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a></li>
+          <li><a href="https://x.com/" aria-label="X (Twitter)" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" class="cf-si" aria-hidden="true" focusable="false"><path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.9L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg></a></li>
+          <li><a href="https://discord.com/" aria-label="Discord" rel="noopener" target="_blank">
+            <svg viewBox="0 0 24 24" class="cf-si" aria-hidden="true" focusable="false"><path d="M19.5 5.3A17 17 0 0 0 15.3 4l-.5 1a15.7 15.7 0 0 0-5.6 0L8.7 4a17 17 0 0 0-4.2 1.3C1.8 9.3 1.1 13.2 1.4 17a17 17 0 0 0 5.2 2.6l1.1-1.8a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.2 0l.4.3c-.5.3-1.1.6-1.7.8l1.1 1.8a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7zM8.8 14.7c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.8 2.1-1.9 2.1zm6.4 0c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.8 2.1-1.9 2.1z"/></svg></a></li>
+        </ul>
+      </div>
+
+      <!-- Heading -->
+      <div class="cf-heading">
+        <h2 class="cf-title"><span class="cf-lets">Let&rsquo;s</span> <span class="cf-talk">Talk</span></h2>
+        <svg class="cf-draw" viewBox="0 0 120 70" aria-hidden="true" focusable="false">
+          <path class="cf-draw__line" pathLength="1" d="M4 64 C 30 52, 62 36, 112 14"/>
+          <path class="cf-draw__head" pathLength="1" d="M92 10 L 113 13 L 104 31"/>
+        </svg>
+      </div>
+
+      <!-- Contact details -->
+      <address class="cf-contact">
+        <ul>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3.5 6 8.5 7 8.5-7"/></svg>
+            <a href="mailto:hello@nextgenapparel.ph">hello@<wbr>nextgenapparel.ph</a>
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 3.5h3.2l1.6 4-2.1 1.4a11 11 0 0 0 7.4 7.4l1.4-2.1 4 1.6V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></svg>
+            <a href="tel:+639171234567">+63 917 123 4567</a>
+          </li>
+          <li>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-6.1-6.5-11a6.5 6.5 0 0 1 13 0c0 4.9-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+            <span>Manila, PH</span>
+          </li>
+        </ul>
+      </address>
+    </div>
+  </footer>
+  <script src="js/main.js" defer></script>
+  <script src="js/header.js" defer></script>
+  <script src="js/shop-hero.js" defer></script>
+  <script src="js/shop-listing.js" defer></script>
+  <script src="js/contact.js" defer></script>
+</body>
+</html>

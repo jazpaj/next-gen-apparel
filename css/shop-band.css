@@ -1,0 +1,55 @@
+/* ==========================================================================
+   ///  SHOP — decorative bottom band (mountains / concrete / orange zig-zag)
+   One inline SVG in mockup units (viewBox = ref x0–1199, y1130–1312) that
+   scales with the viewport and sits flush on the footer (same --c-bg).
+   ========================================================================== */
+
+.shop-band {
+  position: relative;
+  width: 100%;
+  height: clamp(110px, calc(100vw * 182 / 1199), 320px);
+  background: var(--c-bg);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shop-band__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+
+.shop-band__mountains image { filter: grayscale(1) contrast(1.08); mix-blend-mode: lighten; }
+.shop-band__mountains { isolation: isolate; }
+.shop-band__concrete { filter: grayscale(1) contrast(1.15) brightness(1.1); }
+
+/* right-hand face of the block: a lighter wash so the corner reads */
+.shop-band__face { fill: var(--c-cream); opacity: 0.08; }
+
+.shop-band__line {
+  fill: none;
+  stroke: var(--c-orange);
+  stroke-width: 1.8;
+  stroke-linejoin: miter;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .shop-band__line {
+    animation: shop-band-draw 1.4s var(--ease-out) 0.3s both;
+  }
+}
+@keyframes shop-band-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 600px) {
+  .shop-band { height: 110px; }
+  /* keep the art's aspect ratio and pin it right so the concrete + line stay in view */
+  .shop-band__art { left: auto; right: 0; width: calc(110px * 1199 / 182); }
+  .shop-band__line { stroke-width: 2.6; }
+}

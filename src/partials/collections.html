@@ -1,0 +1,129 @@
+    <section class="shop-hero shop-hero--collections" id="collections-hero" aria-labelledby="collections-title">
+      <svg class="shop-hero__defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <filter id="shop-hero-rough" x="-5%" y="-40%" width="110%" height="180%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+        </filter>
+        <symbol id="col-brush" viewBox="0 0 120 16">
+          <path d="M2 13 C 30 9, 60 5, 84 2 C 89 1.5, 89 4, 84 6 C 72 9, 62 11, 58 13 C 56 14.5, 59 14.5, 64 13.5 C 82 10, 100 7, 118 5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14 13 C 40 9, 64 6, 82 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+        </symbol>
+      </svg>
+
+      <div class="shop-hero__banner">
+        <figure class="shop-hero__media">
+          <img class="shop-hero__img" src="assets/img/hero-model.webp" width="864" height="480" fetchpriority="high" decoding="async"
+               alt="Model in a black technical jacket looking down at the camera, framed by an orange panel and a concrete pillar">
+        </figure>
+
+        <div class="shop-hero__content container">
+          <nav class="shop-hero__crumbs" aria-label="Breadcrumb">
+            <ol class="shop-hero__crumb-list">
+              <li><a class="shop-hero__crumb-home" href="index.html" aria-label="Home">/</a></li>
+              <li><span aria-current="page">Collections</span></li>
+            </ol>
+          </nav>
+
+          <h1 class="shop-hero__title" id="collections-title">
+            <span class="shop-hero__line">Our</span>
+            <span class="shop-hero__line shop-hero__line--2">Collections</span>
+            <svg class="shop-hero__swoosh" viewBox="0 0 350 52" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <path class="shop-hero__swoosh-path" pathLength="1" d="M2 49 C 60 37, 140 20, 206 8 C 214 7, 214 11, 205 15 C 185 25, 160 35, 150 43 C 146 47, 150 47, 160 44 C 230 28, 290 14, 348 4"/>
+              <path class="shop-hero__swoosh-path shop-hero__swoosh-path--thin" pathLength="1" d="M40 44 C 100 32, 160 20, 204 11 M 156 44 C 220 30, 280 16, 344 7"/>
+            </svg>
+          </h1>
+
+          <p class="shop-hero__sub">Curated drops. Signature styles.<br> Built for everyday movement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="collections container" aria-label="All collections">
+      <article class="col-card col-card--feature reveal">
+        <div class="col-card__media">
+          <img class="col-card__img" src="assets/img/col-core-series.webp" width="1558" height="620" loading="lazy" decoding="async" alt="">
+        </div>
+        <div class="col-card__body">
+          <h2 class="col-card__title">
+            <a class="col-card__link" href="shop.html"><span class="col-card__line">Core</span> <span class="col-card__line col-card__line--2">Series</span></a>
+            <span class="col-card__slash" aria-hidden="true"></span>
+          </h2>
+          <p class="col-card__copy">Timeless essentials<br> with a modern edge.</p>
+          <span class="col-card__cta" aria-hidden="true">Explore collection <svg class="col-card__arrow" viewBox="0 0 24 24"><path d="M3 12h17M14 6l6 6-6 6"/></svg></span>
+        </div>
+      </article>
+
+      <div class="collections__row collections__row--2">
+        <article class="col-card col-card--md reveal" style="--d:0">
+          <div class="col-card__media">
+            <img class="col-card__img" src="assets/img/col-utility.webp" width="924" height="822" loading="lazy" decoding="async" alt="">
+          </div>
+          <div class="col-card__body">
+            <h2 class="col-card__title">
+              <a class="col-card__link" href="shop.html?category=jackets"><span class="col-card__line">Utility</span> <span class="col-card__line">Collection</span></a>
+            </h2>
+            <svg class="col-card__brush" aria-hidden="true" focusable="false"><use href="#col-brush"/></svg>
+            <p class="col-card__copy">Functional gear<br> for everyday use.</p>
+            <span class="col-card__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </article>
+
+        <article class="col-card col-card--md reveal" style="--d:1">
+          <div class="col-card__media">
+            <img class="col-card__img" src="assets/img/col-graphic.webp" width="1071" height="822" loading="lazy" decoding="async" alt="">
+          </div>
+          <div class="col-card__body">
+            <h2 class="col-card__title">
+              <a class="col-card__link" href="shop.html?category=tees"><span class="col-card__line">Graphic</span> <span class="col-card__line">Series</span></a>
+            </h2>
+            <svg class="col-card__brush" aria-hidden="true" focusable="false"><use href="#col-brush"/></svg>
+            <p class="col-card__copy">Bold designs.<br> Stronger<br> statements.</p>
+            <span class="col-card__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </article>
+      </div>
+
+      <div class="collections__row collections__row--3">
+        <article class="col-card col-card--sm reveal" style="--d:0">
+          <div class="col-card__media">
+            <img class="col-card__img" src="assets/img/col-techwear.webp" width="528" height="774" loading="lazy" decoding="async" alt="">
+          </div>
+          <div class="col-card__body">
+            <h2 class="col-card__title">
+              <a class="col-card__link" href="shop.html?category=jackets"><span class="col-card__line">Techwear</span> <span class="col-card__line">Collection</span></a>
+            </h2>
+            <svg class="col-card__brush" aria-hidden="true" focusable="false"><use href="#col-brush"/></svg>
+            <p class="col-card__copy">Performance<br> meets street style.</p>
+            <span class="col-card__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </article>
+
+        <article class="col-card col-card--sm reveal" style="--d:1">
+          <div class="col-card__media">
+            <img class="col-card__img" src="assets/img/col-essentials.webp" width="504" height="774" loading="lazy" decoding="async" alt="">
+          </div>
+          <div class="col-card__body">
+            <h2 class="col-card__title">
+              <a class="col-card__link" href="shop.html?category=hoodies"><span class="col-card__line">Essentials</span> <span class="col-card__line">Collection</span></a>
+            </h2>
+            <svg class="col-card__brush" aria-hidden="true" focusable="false"><use href="#col-brush"/></svg>
+            <p class="col-card__copy">Clean. Versatile.<br> Always in style.</p>
+            <span class="col-card__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </article>
+
+        <article class="col-card col-card--sm reveal" style="--d:2">
+          <div class="col-card__media">
+            <img class="col-card__img" src="assets/img/col-accessories.webp" width="477" height="774" loading="lazy" decoding="async" alt="">
+          </div>
+          <div class="col-card__body">
+            <h2 class="col-card__title">
+              <a class="col-card__link" href="shop.html?category=accessories"><span class="col-card__line">Accessories</span> <span class="col-card__line">Collection</span></a>
+            </h2>
+            <svg class="col-card__brush" aria-hidden="true" focusable="false"><use href="#col-brush"/></svg>
+            <p class="col-card__copy">Complete<br> your look.</p>
+            <span class="col-card__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </article>
+      </div>
+    </section>
