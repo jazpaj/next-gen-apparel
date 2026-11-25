@@ -1,6 +1,6 @@
 /* Contact page: banner load-in (reuses .shop-hero), concrete settle on scroll,
    message form (floating labels, validation, local success state — no network),
-   inquiry-type shortcuts (?type=… and data-inquiry links), live-chat toast,
+   inquiry-type shortcuts (?type=… and data-inquiry links),
    order tracking (#track; ?order=&email= deep link; uses window.NGOrders). */
 (() => {
   const hero = document.querySelector('.contact-hero');
@@ -132,21 +132,6 @@
     });
   });
 
-  /* Live chat placeholder ------------------------------------------------- */
-  const chatBtn = document.querySelector('[data-live-chat]');
-  const toast = document.querySelector('[data-chat-toast]');
-  let toastTimer;
-  if (chatBtn && toast) {
-    chatBtn.addEventListener('click', () => {
-      toast.textContent = 'Live chat opens during business hours (Mon – Fri, 9AM – 6PM PHT).';
-      toast.classList.add('is-shown');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => {
-        toast.classList.remove('is-shown');
-        setTimeout(() => { if (!toast.classList.contains('is-shown')) toast.textContent = ''; }, 400);
-      }, 3600);
-    });
-  }
   /* Order tracking (#track) ---------------------------------------------- */
   const track = document.getElementById('track');
   const tForm = document.querySelector('[data-track-form]');

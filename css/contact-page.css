@@ -326,24 +326,6 @@ textarea.cp-field__control:not(:placeholder-shown) + .cp-field__label,
 .cp-row__link:hover .cp-row__title { color: var(--c-orange); }
 .cp-row__link:focus-visible { outline-offset: 4px; }
 
-.cp-toast {
-  position: absolute;
-  left: 108px;
-  bottom: -14px;
-  padding: 10px 14px;
-  background: var(--c-cream);
-  color: var(--c-ink);
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  border-left: 3px solid var(--c-orange);
-  opacity: 0;
-  transform: translateY(8px);
-  pointer-events: none;
-  transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
-}
-.cp-toast:empty { padding: 0; border: 0; }
-.cp-toast.is-shown { opacity: 1; transform: none; }
 
 /* Let's collaborate -------------------------------------------------------- */
 .cp-collab__inner {
@@ -750,7 +732,6 @@ textarea.cp-field__control:not(:placeholder-shown) + .cp-field__label,
   .cp-row__box .cp-icon { width: 32px; height: 32px; }
   .cp-row__title { font-size: 17px; }
   .cp-row__text { font-size: 15px; overflow-wrap: anywhere; }
-  .cp-toast { left: 0; right: 0; }
 
   .cp-collab__inner {
     flex-direction: column;
