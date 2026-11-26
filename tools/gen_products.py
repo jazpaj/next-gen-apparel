@@ -99,6 +99,8 @@ def pick_sizes(cat):
     end = rng.choice([4, 5, 5, 6, 6])
     return ALL[start:end]
 
+PICKED = {}
+
 def gen(cat, n, used_ids, used_names):
     s = SPEC[cat]
     out = []
@@ -126,12 +128,15 @@ def gen(cat, n, used_ids, used_names):
             date = today - datetime.timedelta(days=rng.randrange(0, 210))
         pop = rng.randrange(8, 95)
         noun = model.lower()
+        # Same rng call order as before, so the catalog itself doesn't change.
+        fabric, detail, fit = rng.choice(s['fabric']), rng.choice(s['detail']), rng.choice(s['fit'])
         desc = (f"The {series} {noun} in {' / '.join(COLOR_LABEL[c].lower() for c in colors)}, cut from "
-                f"{rng.choice(s['fabric'])} with {rng.choice(s['detail'])}. {rng.choice(s['fit'])}")
+                f"{fabric} with {detail}. {fit}")
         if pre:
             desc += ' Ships with the next drop.'
         out.append([pid, name, cat, price, colors, pick_sizes(cat), 'pre-order' if pre else 'in-stock',
                     date.isoformat(), pop, img, desc])
+        PICKED[pid] = {'fabric': fabric, 'detail': detail, 'fit': fit}
     return out
 
 used_ids = {p[0] for p in BASE}
@@ -143,13 +148,145 @@ for cat, total in TARGET.items():
 
 assert len(products) == 260 and len({p[0] for p in products}) == 260
 
+# ---------------------------------------------------------------- Extras
+# Rating, review count and a spec list per product. Seeded per id so these
+# never shift the catalog above.
+BASE_SPEC = {  # hand-written products: material + key features
+  'v01-tech-hoodie': ('420gsm brushed-back fleece', ['Scuba hood with no drawcords', 'Bonded zip hand pockets', 'Embroidered /// mark at the chest']),
+  'graphic-tee-02': ('260gsm heavyweight cotton', ['Hand-pulled cracked-ink X graphic', 'Tight 1x1 ribbed collar', 'Double-needle hem']),
+  'cargo-pants': ('dense cotton twill', ['Bellowed thigh pockets', 'Adjustable ankle cinches', 'Reinforced belt loops']),
+  'utility-jacket': ('a water-resistant nylon shell', ['Fully taped seams', 'Storm flap over the zip', 'Four utility pockets']),
+  'signature-cap': ('washed cotton twill', ['3D-embroidered /// mark', 'Structured six-panel crown', 'Adjustable metal clasp']),
+  'tech-sling-bag': ('coated ripstop', ['4L main compartment', 'Signal-orange zip channel', 'Padded phone sleeve and quick-release buckle']),
+  'v02-shell-hoodie': ('bonded soft-shell fleece', ['Wind-blocking, sheds light rain', 'Laser-cut underarm vents', 'Zip chest pocket']),
+  'graphic-tee-03-bone': ('260gsm heavyweight cotton', ['Tonal 03 graphic', 'Undyed bone body', 'Garment-washed for a soft hand']),
+  'ripstop-cargo-olive': ('olive ripstop cotton', ['Articulated knees', 'Hidden zip pockets', 'Gusseted crotch']),
+  'field-jacket-olive': ('waxed cotton canvas', ['Corduroy-lined collar', 'Four bellowed pockets', 'Snap-down storm cuffs']),
+  'core-cap-orange': ('washed cotton twill', ['Tonal embroidered logo', 'Unstructured, broken-in crown', 'Adjustable strap']),
+  'crossbody-sling-grey': ('brushed nylon', ['Two zip compartments', 'One-pull adjustable webbing strap', 'Slim, low-profile body']),
+  'v01-tech-hoodie-signal': ('420gsm brushed-back fleece', ['Scuba hood with no drawcords', 'Bonded zip hand pockets', 'Signal-orange body']),
+  'boxy-tee-01': ('220gsm combed cotton', ['Short, boxy body', 'Wide sleeves', 'No graphics — clean base layer']),
+  'tech-jogger': ('four-way stretch nylon', ['Zip hand pockets', 'Bungee-cinch hem', 'Elastic waist with internal drawcord']),
+  'storm-shell-jacket': ('a 3-layer waterproof membrane', ['20K waterproof rating, fully taped seams', 'Pit zips', 'Helmet-compatible hood']),
+  'heavyweight-hoodie-bone': ('500gsm loopback cotton', ['Double-layer hood', 'No drawcords for a clean drape', 'Ribbed cuffs and hem']),
+  'utility-tee-grey': ('260gsm heavyweight cotton', ['Reinforced chest utility pocket', 'Bar-tacked stress points', 'Grey marl body']),
+  'six-pocket-pant': ('brushed cotton sateen', ['Six pockets', 'Straight leg', 'Adjustable buckle waist']),
+  'waxed-cap-olive': ('waxed canvas', ['Sheds light rain', 'Leather strap with brass buckle', 'Patinas with wear']),
+  'v03-gore-hoodie': ('waterproof membrane fleece', ['Welded seams', 'Laminated chest pocket', 'Shipping with the December drop']),
+  'expedition-parka': ('recycled ripstop with synthetic fill', ['700-fill synthetic core', 'Removable hood baffle', 'Eight pockets']),
+  'graphic-tee-04-signal': ('260gsm heavyweight cotton', ['Black 04 graphic on signal orange', 'Limited run', 'Double-needle hem']),
+  'modular-sling-pack': ('recycled 600D nylon', ['Detachable hip pouch', 'MOLLE webbing', 'Weather-sealed main zip']),
+}
+BASE_FIT = {'tees': 'Boxy, cropped body with dropped shoulders.', 'hoodies': 'Boxy through the body, dropped at the shoulder.',
+            'pants': 'Relaxed through the thigh with room to stack.', 'jackets': 'Boxy fit with room to layer.',
+            'accessories': 'One size, fully adjustable.'}
+COMPOSITION = [  # (substring of fabric, composition) — first match wins
+  ('waxed', '100% cotton, paraffin wax finish'), ('membrane fleece', 'Polyester fleece bonded to a waterproof membrane'),
+  ('recycled 600D', '100% recycled nylon'),
+  ('membrane', 'Nylon face, waterproof membrane, tricot backer'), ('soft-shell', '94% polyester, 6% elastane'),
+  ('polar', '100% recycled polyester'), ('tech fleece', '70% recycled polyester, 30% cotton'),
+  ('fleece', '80% cotton, 20% recycled polyester'), ('loopback', '100% cotton'), ('terry', '100% cotton'),
+  ('modal', '60% cotton, 40% modal'), ('cotton', '100% cotton'), ('jersey', '100% cotton'),
+  ('stretch nylon', '88% nylon, 12% elastane'), ('nylon', '100% nylon'), ('ripstop with', '100% recycled polyester shell and fill'),
+  ('ripstop', '100% nylon ripstop'), ('membrane', 'Nylon face, waterproof membrane, tricot backer'),
+  ('waxed', '100% cotton, paraffin wax finish'), ('twill', '100% cotton'), ('drill', '100% cotton'), ('canvas', '100% cotton'),
+]
+EXTRA = {
+  'tees': ['Pre-shrunk — keeps its size after washing', 'Taped neck and shoulder seams', 'Woven /// label at the hem'],
+  'hoodies': ['Ribbed cuffs and hem that hold their shape', 'Pre-shrunk, garment-washed body', 'Woven /// label at the hem'],
+  'pants': ['YKK zip fly', 'Bar-tacked pocket corners', 'Woven /// label at the back pocket'],
+  'jackets': ['YKK two-way front zip', 'Internal stash pocket', 'Adjustable hem drawcord'],
+  'accessories': ['YKK zips and hardware', 'Woven /// label', 'Reinforced stitching at stress points'],
+}
+USE = {
+  'tees': ['Wear it alone through the Manila heat or under an overshirt when the night cools down.',
+           'Pairs with wide cargos and a cap for the full uniform.',
+           'Built thick enough to wear on its own, soft enough to sleep in.',
+           'Holds its shape wash after wash — no twisting side seams.'],
+  'hoodies': ['Heavy enough for aircon offices and late rides, breathable enough for the commute.',
+              'Layer it under a shell when the rain comes in sideways.',
+              'Gets softer every wash without losing its structure.',
+              'Pairs with tech joggers for a clean all-black fit.'],
+  'pants': ['Made to move — from the jeepney to the skate spot.',
+            'Pockets sit flat when empty, so the silhouette stays clean.',
+            'Pairs with a boxy tee and chunky sneakers.',
+            'Tough enough for everyday wear, easy to wash and dry.'],
+  'jackets': ['Light enough to pack, tough enough for wet-season downpours.',
+              'Cut to fit over a hoodie without bunching at the shoulders.',
+              'Throw it on over anything — it does the heavy lifting.',
+              'Built to take a beating and look better for it.'],
+  'accessories': ['The finishing piece for any fit.',
+                  'Small enough to forget it is there, tough enough to last years.',
+                  'Built to carry the essentials and nothing else.',
+                  'Matches the rest of the line in fabric and hardware.'],
+}
+SIZES_TXT = ['XS', 'S', 'M', 'L', 'XL']
+
+def care_for(cat, fabric):
+    if 'waxed' in fabric:
+        return 'Wipe clean with a damp cloth; re-wax when it dries out. Do not machine wash.'
+    if 'membrane' in fabric or 'shell' in fabric or 'soft-shell' in fabric:
+        return 'Machine wash cold on gentle, no softener. Tumble dry low to refresh water repellency.'
+    if cat == 'accessories':
+        return 'Spot clean with a damp cloth. Air dry.'
+    if cat in ('tees', 'hoodies'):
+        return 'Machine wash cold, inside out. Hang dry. Do not iron prints or embroidery.'
+    return 'Machine wash cold with like colors. Hang dry.'
+
+def comp_for(fabric):
+    for key, comp in COMPOSITION:
+        if key in fabric:
+            return comp
+    return '100% cotton'
+
+today = datetime.date(2026, 11, 24)
+for p in products:
+    pid, cat, pop, stock = p[0], p[2], p[8], p[6]
+    r = random.Random('extras:' + pid)
+    if pid in BASE_SPEC:
+        fabric, feats = BASE_SPEC[pid]
+        fit = BASE_FIT[cat]
+    else:
+        pk = PICKED[pid]
+        fabric, fit = pk['fabric'], pk['fit']
+        other = r.choice([d for d in SPEC[cat]['detail'] if d != pk['detail']])
+        feats = [pk['detail'][0].upper() + pk['detail'][1:].removeprefix('a ').removeprefix('an '),
+                 other[0].upper() + other[1:]]
+        feats = [f.replace('A ', '', 1) if f.startswith('A ') else f for f in feats]
+        feats = [f[0].upper() + f[1:] for f in feats]
+        feats.append(r.choice(EXTRA[cat]))
+        p[10] = p[10].replace(' Ships with the next drop.', '') + f" Finished with {other}." + \
+            (' Ships with the next drop.' if stock == 'pre-order' else '')
+    p[10] += ' ' + r.choice(USE[cat])
+
+    if stock == 'pre-order':
+        rating, reviews = 0, 0
+    else:
+        age = (today - datetime.date.fromisoformat(p[7])).days
+        rating = round(min(5.0, max(3.6, 3.95 + pop / 95 * 0.85 + r.gauss(0, 0.18))), 1)
+        reviews = max(3, int(pop * (0.35 + min(age, 200) / 200 * 1.6) * r.uniform(0.6, 1.4)))
+
+    material = fabric.removeprefix('a ').removeprefix('an ')
+    spec = [['Material', f"{material[0].upper() + material[1:]} — {comp_for(fabric)}"]]
+    if cat != 'accessories':
+        size = r.choice(SIZES_TXT[1:]) if 'Oversized' not in fit else r.choice(['S', 'M'])
+        h = r.choice([170, 173, 175, 178, 180, 183, 185])
+        spec.append(['Fit', f"{fit} Model is {h} cm and wears {size}."])
+    else:
+        spec.append(['Size', fit])
+    spec.append(['Features', feats])
+    spec.append(['Care', care_for(cat, fabric)])
+    spec.append(['Made', f"Designed in Manila. Produced in a run of {r.choice([150, 200, 250, 300, 400])} pieces."])
+    p += [rating, reviews, spec]
+
 counts = {c: sum(1 for p in products if p[2] == c) for c in TARGET}
 avail = {a: sum(1 for p in products if p[6] == a) for a in ('in-stock', 'pre-order')}
 
 rows = ',\n'.join('  ' + json.dumps(p, ensure_ascii=False) for p in products)
 js = f"""/* GENERATED by tools/gen_products.py — do not edit by hand; edit the script and re-run.
    NGProducts: the full shop catalog ({len(products)} products).
-   Row: [id, name, category, price, colors, sizes, stock, date, popularity, image, description]
+   Row: [id, name, category, price, colors, sizes, stock, date, popularity, image, description,
+        rating (0 = no reviews yet), reviews, spec [[label, text | [features]]]]
    Category totals: {json.dumps(counts)} · availability: {json.dumps(avail)} */
 window.NGProducts = [
 {rows}

@@ -99,6 +99,7 @@
                   <option value="price-asc">Price: Low–High</option>
                   <option value="price-desc">Price: High–Low</option>
                   <option value="popular">Popular</option>
+                  <option value="rating">Top rated</option>
                 </select>
                 <svg class="select__chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
               </span>
@@ -161,6 +162,7 @@
           <div class="qv__info">
             <p class="qv__eyebrow" data-qv-cat></p>
             <h2 class="qv__title" id="qv-title" data-qv-title></h2>
+            <p class="rating qv__rating" data-qv-rating></p>
             <p class="qv__price" data-qv-price></p>
             <p class="qv__desc" id="qv-desc" data-qv-desc></p>
 
@@ -192,6 +194,11 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20.3s-7.8-4.7-7.8-10.4A4.4 4.4 0 0 1 12 7.2a4.4 4.4 0 0 1 7.8 2.7c0 5.7-7.8 10.4-7.8 10.4z"/></svg>
               </button>
             </div>
+
+            <section class="qv__more" aria-labelledby="qv-spec-title" data-qv-spec-wrap>
+              <h3 class="qv__label" id="qv-spec-title">Product details</h3>
+              <dl class="qv__spec" data-qv-spec></dl>
+            </section>
 
             <ul class="qv__details" role="list" data-qv-details>
               <li>Free shipping over $150</li>

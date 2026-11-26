@@ -13,9 +13,9 @@
     sling: ['assets/img/product-tech-sling-bag.webp', 600, 657],
   };
   const CAT = { hoodies: 'Hoodie', jackets: 'Jacket', tees: 'Tee', pants: 'Pants', accessories: 'Accessory' };
-  // Row: [id, name, category, price, colors, sizes, stock, date, popularity, image, description]
-  const products = (window.NGProducts || []).map(([id, name, category, price, colors, , stock, , popularity, img]) =>
-    ({ id, name, category, price, colors, stock, popularity, img: IMG[img] || IMG.tee }));
+  // Row: [id, name, category, price, colors, sizes, stock, date, popularity, image, description, rating, reviews, spec]
+  const products = (window.NGProducts || []).map(([id, name, category, price, colors, , stock, , popularity, img, , rating, reviews]) =>
+    ({ id, name, category, price, colors, stock, popularity, rating: rating || 0, reviews: reviews || 0, img: IMG[img] || IMG.tee }));
   const colorName = (c) => (c === 'cream' ? 'Bone' : c.charAt(0).toUpperCase() + c.slice(1));
 
   /* ---------------------------------------------------- Index counts */
@@ -46,7 +46,7 @@
         <a class="hx-row__link" href="shop.html?product=${encodeURIComponent(p.id)}">
           <span class="hx-row__no">${pad(i + 1)}</span>
           <img class="hx-row__thumb" src="${src}" width="${w}" height="${h}" alt="" loading="lazy" decoding="async">
-          <span class="hx-row__name">${esc(p.name)}<span class="hx-row__meta">${CAT[p.category]} · ${p.colors.map(colorName).join(' / ')}</span></span>
+          <span class="hx-row__name">${esc(p.name)}<span class="hx-row__meta">${CAT[p.category]} · ${p.colors.map(colorName).join(' / ')}</span><span class="rating hx-row__rating"><span class="stars" style="--r:${p.rating}" role="img" aria-label="Rated ${p.rating.toFixed(1)} out of 5 from ${p.reviews} reviews"></span><span class="rating__num" aria-hidden="true">${p.rating.toFixed(1)}</span><span class="rating__count" aria-hidden="true">(${p.reviews})</span></span></span>
           <span class="hx-row__price">$${p.price}</span>
           <svg class="hx-row__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>

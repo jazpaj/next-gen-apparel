@@ -265,6 +265,7 @@
 
 .card__body { padding: 12px 4px 0; }
 .card__name { font-weight: 700; font-size: 16px; line-height: 1.2; letter-spacing: 0.02em; text-transform: uppercase; }
+.card__rating { margin-top: 7px; }
 .card__price { margin-top: 6px; font-size: 15px; color: var(--c-text); }
 .card__meta { display: none; }
 .card__tag {
@@ -467,6 +468,10 @@
   .grid { gap: 20px 12px; }
   .card__name { font-size: 13px; }
   .card__price { font-size: 13px; margin-top: 3px; }
+  .card__rating { margin-top: 5px; gap: 4px; }
+  .card__rating .stars { --star: 11px; }
+  .card__rating .rating__num { font-size: 12px; }
+  .card__rating .rating__count { font-size: 11px; }
   .card__body { padding: 10px 2px 0; }
   .card__wish { top: 2px; right: 2px; }
   .card__wish svg { width: 21px; height: 21px; }
@@ -575,7 +580,24 @@
   font-size: clamp(28px, 2.8vw, 42px); line-height: 0.98; letter-spacing: -0.01em; text-transform: uppercase;
 }
 .qv__price { margin-top: 14px; font-size: 20px; font-weight: 600; letter-spacing: 0.02em; }
-.qv__desc { margin-top: 14px; color: var(--c-muted); font-size: 15px; line-height: 1.6; max-width: 46ch; }
+.qv__rating { margin-top: 12px; }
+.qv__rating .stars { --star: 16px; }
+.qv__desc { margin-top: 14px; color: var(--c-muted); font-size: 15px; line-height: 1.6; max-width: 52ch; }
+
+.qv__more { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--c-line); }
+.qv__more[hidden] { display: none; }
+.qv__spec { margin-top: 6px; }
+.qv__spec-row {
+  display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid var(--c-line);
+  font-size: 14px; line-height: 1.5;
+}
+.qv__spec-row:last-child { border-bottom: 0; }
+.qv__spec dt { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-orange); padding-top: 3px; }
+.qv__spec dd { color: var(--c-text); }
+.qv__spec dd ul { display: grid; gap: 4px; }
+.qv__spec dd li { display: flex; gap: 8px; }
+.qv__spec dd li::before { content: "—"; color: var(--c-muted); }
 
 .qv__opt { margin-top: 22px; }
 .qv__label { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
